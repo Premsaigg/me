@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prem Sai Govardhanagiri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c2c2c;
+            --secondary: #666;
+            --accent: #8b4513;
+            --bg: #fafafa;
+            --border: #e0e0e0;
+            --accent-light: #f5f0eb;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--primary);
+            background: var(--bg);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 250, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 2rem;
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .social-icons a {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        section {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:first-of-type {
+            margin-top: 80px;
+        }
+
+        .section-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-divider::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero-social {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .hero-social a {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-social {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .hero-social a {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .job-title {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .job-dates {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .capability-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .capability-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .capability-card h3 {
+            font-size: 1.2rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .capability-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .beyond-work-item {
+            min-height: 80vh;
+            padding: 1rem 0;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .beyond-work-header-wrapper {
+            position: relative;
+            height: 100%;
+        }
+
+        .beyond-work-header {
+            position: sticky;
+            top: 100px;
+            padding: 1.5rem 0;
+        }
+
+        .beyond-work-header h4 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        .beyond-work-content {
+            padding-top: 0;
+        }
+
+        .image-carousel {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-image {
+            min-width: 100%;
+            height: 400px;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            pointer-events: all;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .carousel-arrow:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-arrow:disabled:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--accent);
+            transform: scale(1);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--accent);
+        }
+
+        .content-list {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .content-list li:hover {
+            color: var(--accent);
+            padding-left: 1rem;
+        }
+
+        .content-list li::before {
+            content: "→ ";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .content-list a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .list-section {
+            margin: 2rem 0;
+        }
+
+        .list-section h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .callout-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        .availability {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .connect-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            margin-right: 1rem;
+        }
+
+        .connect-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .connect-btn.secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .connect-btn.secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                margin: 0 auto;
+            }
+
+            .hero-social {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .beyond-work-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .beyond-work-header {
+                position: relative;
+                top: 0;
+            }
+
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo">Prem</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#what-i-bring">What I Bring</a>
+                <a href="#coffee">Coffee</a>
+                <a href="#sports">Sports</a>
+                <a href="#interests">Interests</a>
+                <a href="#contact">Contact</a>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/premsaig" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://twitter.com/PremSaiGG" target="_blank" title="X">𝕏</a>
+                    <a href="https://premsaigg.substack.com/" target="_blank" title="Substack">✎</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm Prem 👋</h1>
+                <p>I spent six years in finance and product development—analyzing businesses, building digital tools, and solving problems. I'm on a career break exploring where my skills and interests align. Two areas stand out: <strong>specialty coffee</strong> and <strong>sports management</strong>—industries where business rigor meets genuine passion.</p>
+
+                <p><strong>I'm seeking 3-6 month opportunities to build hands-on capability while contributing business thinking:</strong></p>
+                <div class="cta-buttons">
+                    <a href="#coffee" class="btn">☕ Coffee</a>
+                    <a href="#sports" class="btn">🏆 Sports</a>
+                </div>
+            </div>
+            <div class="hero-image">[Your Photo Here]</div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="about">
+        <h2>About</h2>
+        <h3>Who I Am</h3>
+        <p>I'm drawn to understanding how things work—not just on the surface, but the <strong>underlying systems and incentives</strong> that drive decisions. This curiosity took me from finance to product development, and now towards coffee and sports management.</p>
+        <p>In finance, I analyzed how businesses make money and manage risk. In product development, I learned how user needs become digital solutions. I'm looking forward to applying that <strong>systems-thinking</strong> to industries built around craft, community, and passion.</p>
+
+        <h3>Professional Background</h3>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2022-2025</span></div></div><div><h4 class="job-title">Product Analyst | Acuity Knowledge Partners</h4><p class="job-dates">May 2022 - August 2025</p><p>I worked on five products, with two standouts: a financial statement analysis tool that standardized company reporting for analysis, and a fund reporting platform that fed third-party intelligence tools.</p><p>The work taught me to <strong>think from first principles</strong>—understand the user problem deeply, then guide designers and engineers towards the best solution within our constraints.</p><p>Key outcomes:</p><ul><li>Took product accuracy from <strong>30% to 90%</strong> through systematic refinement</li><li>Proposed a product overhaul after comprehensive research combining user interviews, competitive analysis, and UX redesign</li><li>Managed the integration of an AI-based RFP tool with a fund data platform</li></ul><p style="margin-bottom:3rem">I worked in agile environments using Jira, Confluence, Figma, and analytics tools like Pendo.</p></div></div>
+
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2019-2022</span></div></div><div><h4 class="job-title">Credit Analyst | Acuity Knowledge Partners</h4><p class="job-dates">September 2019 - April 2022</p><p>I analyzed borrowers for a Texas commercial bank across real estate, energy, retail, and non-profits. The role demanded <strong>precision</strong>—reviewing financial statements line by line, calculating loan covenants, and maintaining accuracy under tight deadlines using Moody's Risk Analyst and CreditLens.</p><p>I became the person the team trusted with complicated financials and had the <strong>fastest progression</strong>, handling all specialized roles within 18 months.</p></div></div>
+
+        <h3>Education & Credentials</h3>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:50px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">Jul '23</span></div></div><div><p><strong>CFA Level 2</strong> (Passed July 2023)</p></div></div>
+
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:50px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2018-2019</span></div></div><div><p><strong>Post Graduate Certificate</strong> in Investment Banking & Research</p></div></div>
+
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:50px"><div style="position:absolute;right:0;top:0.5rem;bottom:0;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2015-2018</span></div></div><div><p><strong>B.Com (Hons)</strong> | Sri Sathya Sai Institute for Higher Learning</p></div></div>
+
+        <h3>Making a Move</h3>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--accent)">Now</span></div></div><div><p>Three years ago, I shifted from credit analysis to product development—going from zero knowledge to shipping multiple products. That proved I can <strong>learn new domains quickly</strong> when I commit.</p><p>Now I'm making another deliberate move: into coffee or sports management. After six years building business and product skills, I'm ready to apply them in industries where I'm genuinely interested. I'm dedicating <strong>3-6 months to building hands-on capability</strong>—learning the craft, understanding the business, contributing where I can.</p><p>This isn't casual exploration. I'm betting on building a foundation in one of these industries for a <strong>long-term career shift</strong>.</p></div></div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="what-i-bring">
+        <h2>What I Bring</h2>
+        <p>Core capabilities I've developed over six years—and how they translate to new domains.</p>
+
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <div class="capability-icon">💡</div>
+                <h3>Business Analysis & Strategic Thinking</h3>
+                <p>Breaking down complex business problems and identifying what actually drives value through market analysis, user research, and competitive benchmarking.</p>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">🧩</div>
+                <h3>Product Development & User Experience</h3>
+                <p>Translating needs into solutions by understanding problems from first principles, then guiding teams towards optimal answers within constraints.</p>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">👥</div>
+                <h3>Cross-Functional Coordination</h3>
+                <p>Bridging technical, design, business, and operations teams by understanding motivations and finding alignment towards shared goals.</p>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">📊</div>
+                <h3>Data-Driven Decision Making</h3>
+                <p>Tracking behavior and KPIs using analytics tools, asking good questions of data, and using insights to guide strategic decisions.</p>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">⚙️</div>
+                <h3>Process Optimization & Quality Focus</h3>
+                <p>Finding efficient paths to accomplish work while maintaining accuracy—driving 15-50% efficiency gains across different contexts.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="coffee">
+        <h2>☕ My Coffee Pitch</h2>
+
+        <h3>What I'm Looking For</h3>
+        <p>I'm seeking <strong>3-6 month engagements</strong> with coffee companies working across the value chain. I'm interested in non-barista roles—production assistant, processing support, product development, operations—where I'm actually working with coffee, building real skills in the craft and business.</p>
+        <p>Open to full-time or part-time depending on the role, with modest compensation reflecting the learning opportunity and the business value I can contribute.</p>
+
+        <h3>Why Coffee</h3>
+        <p>I started brewing at home in 2021, just trying to make better morning coffee. The ritual stuck, and I got curious about the complexity—how each step from cherry to cup changes what you taste. It's a beautiful <strong>intersection of science and craft</strong>.</p>
+        <p>What draws me to the business is the energy in India's coffee scene. The post-third wave boom is creating opportunities to build <strong>community and culture</strong>. I admire roasters and cafes like Benki, Nerlu, Drip and Drop, Practically Sobar, Naivo, and Rossette—businesses building brands beyond just selling coffee.</p>
+        
+        <div class="callout-box">I want hands-on skills, not theoretical knowledge.</div>
+        
+        <p>I want to understand coffee at each transformation stage—sourcing, processing, roasting, brewing.</p>
+
+        <h3>What I Bring to Coffee</h3>
+        <p>My finance and product background translates directly to coffee operations—whether that's analyzing unit economics, optimizing supply chain workflows, designing customer experiences, or applying the same quality discipline I use in home brewing to commercial operations.</p>
+
+        <h3>Roles I Can Contribute To</h3>
+        <ul>
+            <li><strong>Production & Processing:</strong> Farm support, post-harvest processing, quality control</li>
+            <li><strong>Roasting Operations:</strong> Batch management, quality testing, production assistance</li>
+            <li><strong>Supply Chain & Sourcing:</strong> Coordination, logistics, supplier relationships</li>
+            <li><strong>Business Operations:</strong> Cost analysis, inventory management, process improvement</li>
+            <li><strong>Product Development:</strong> New offerings, retail strategy, customer experience design</li>
+        </ul>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="sports">
+        <h2>🏆 My Sports Management Pitch</h2>
+
+        <h3>What I'm Looking For</h3>
+        <p>I'm seeking <strong>3-6 month opportunities</strong> in sports management where I can contribute to operations, fan experience, commercial roles, or grassroots development. I'm open to any sport except football, flexible on full-time or part-time arrangements, with modest compensation that reflects both the learning opportunity and the business skills I bring.</p>
+
+        <h3>Why Sports</h3>
+        <p>I've followed cricket since childhood. Tennis hooked me after watching Fedal battle it out. Cycling pulled me in during the 2020 Tour de France. Rugby, golf, and others followed—each revealing something different about <strong>competition, strategy, and human performance</strong>.</p>
+        <p>What draws me beyond fandom is the business machinery behind this—how tournaments are executed, fan experiences crafted, teams building culture alongside commercial success, and grassroots development creating pathways.</p>
+        
+        <div class="callout-box">Sport has the power to transform communities and lives.</div>
+        
+        <p>I admire how Australian cricket, South African rugby, and the All Blacks built sustained excellence through systems, culture, and management. That <strong>combination of passion and professionalism</strong> is what I want to help build.</p>
+
+        <h3>What I Bring to Sports</h3>
+        <p>My business analysis skills (developed through finance and CFA studies), product development experience, and operational coordination translate directly to sports management—whether that's structuring commercial partnerships, building fan engagement platforms, executing tournament operations, or analyzing performance and business metrics.</p>
+
+        <h3>My Writing</h3>
+        <p>I write about sports on Substack—bringing together fan passion with bigger-picture thinking across cycling, tennis, cricket, golf, rugby, and others. It's my way of deepening how I think about the sports I follow.</p>
+        
+        <ul class="content-list">
+            <li><a href="#">Post Title One — Brief description of the post goes here</a></li>
+            <li><a href="#">Post Title Two — Brief description of the post goes here</a></li>
+            <li><a href="#">Post Title Three — Brief description of the post goes here</a></li>
+            <li><a href="#">Post Title Four — Brief description of the post goes here</a></li>
+        </ul>
+        
+        <p><a href="https://premsaigg.substack.com/" target="_blank" style="color: var(--accent); font-weight: 500;">See all writing →</a></p>
+
+        <h3>Roles I Can Contribute To</h3>
+        <ul>
+            <li><strong>Tournament Operations:</strong> Event logistics, venue coordination, execution, live problem-solving</li>
+            <li><strong>Fan Experience:</strong> Stadium experience design, digital engagement, community building</li>
+            <li><strong>Commercial Operations:</strong> Sponsorship management, partnership coordination, account management</li>
+            <li><strong>Grassroots Development:</strong> Community programs, talent identification, local engagement</li>
+            <li><strong>Business Analysis:</strong> Performance metrics, commercial strategy, operational efficiency</li>
+        </ul>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="interests">
+        <h2>Interests</h2>
+        <p>Outside of work, I'm someone who gets absorbed in things—whether it's the ritual of brewing coffee, experimenting in the kitchen, getting lost in a book, or watching sports with the kind of attention that drives my friends crazy. These aren't just hobbies; they're how I stay curious and engaged with the world.</p>
+
+        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>☕ Coffee</h4></div></div><div class="beyond-work-content"><p><em>Brewing since 2021</em></p><p>I use a moka pot, Picopresso, and pour-over methods. What keeps me interested is the balance between experimenting and making a reliably good morning cup. The daily ritual feels meditative. I gravitate toward Indian coffees—sweet, low acidity, medium body.</p><div class="image-carousel"><div class="carousel-container"><div class="carousel-images" id="coffee-carousel"><div class="carousel-image">[Coffee Brewing Setup]<div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('coffee')">←</button><button class="carousel-arrow" onclick="nextImage('coffee')">→</button></div></div><div class="carousel-image">[Latte Art]<div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('coffee')">←</button><button class="carousel-arrow" onclick="nextImage('coffee')">→</button></div></div><div class="carousel-image">[Pour Over Process]<div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('coffee')">←</button><button class="carousel-arrow" onclick="nextImage('coffee')">→</button></div></div></div></div><div class="carousel-nav"><div class="carousel-dots" id="coffee-dots"></div></div></div></div></div>
+
+        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>🍳 Cooking</h4></div></div><div class="beyond-work-content"><p>Exploring techniques, flavors, and the satisfaction of making something from scratch.</p><div class="image-carousel"><div class="carousel-container"><div class="carousel-images" id="cooking-carousel"><div class="carousel-image">[Plated Dish 1]<div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('cooking')">←</button><button class="carousel-arrow" onclick="nextImage('cooking')">→</button></div></div><div class="carousel-image">[Cooking Process]<div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('cooking')">←</button><button class="carousel-arrow" onclick="nextImage('cooking')">→</button></div></div><div class="carousel-image">[Plated Dish 2]<div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('cooking')">←</button><button class="carousel-arrow" onclick="nextImage('cooking')">→</button></div></div></div></div><div class="carousel-nav"><div class="carousel-dots" id="cooking-dots"></div></div></div></div></div>
+
+        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>✍️ Writing</h4></div></div><div class="beyond-work-content"><p>I write about sports on Substack—fan diaries that connect personal passion with broader narratives. I follow cycling, tennis, cricket, golf, rugby, and others. Aiming for weekly posts as I build the habit.</p><ul class="content-list"><li><a href="#">Post Title One — Brief description of the post goes here</a></li><li><a href="#">Post Title Two — Brief description of the post goes here</a></li><li><a href="#">Post Title Three — Brief description of the post goes here</a></li><li><a href="#">Post Title Four — Brief description of the post goes here</a></li></ul><p><a href="https://premsaigg.substack.com/" target="_blank" style="color:var(--accent);font-weight:500">See all writing →</a></p></div></div>
+
+        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>📚 Reading</h4></div></div><div class="beyond-work-content"><p>Currently reading and recommendations—books, newsletters, and podcasts exploring ideas that shape how I see the world.</p><div class="list-section"><h5>Currently Reading</h5><ul class="content-list"><li>Book Title — Author Name</li><li>Book Title — Author Name</li></ul></div><div class="list-section"><h5>Recommendations</h5><ul class="content-list"><li>Book Title — Author Name</li><li>Newsletter Name</li><li>Podcast Name</li><li>Book Title — Author Name</li></ul></div></div></div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <p class="availability">Available to start immediately • Based in Bengaluru</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-details">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:premsaigovardhanagiri@gmail.com">premsaigovardhanagiri@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">in</div>
+                <div class="contact-details">
+                    <div class="contact-label">LinkedIn</div>
+                    <a href="https://www.linkedin.com/in/premsaig" target="_blank">linkedin.com/in/premsaig</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">𝕏</div>
+                <div class="contact-details">
+                    <div class="contact-label">X (Twitter)</div>
+                    <a href="https://twitter.com/PremSaiGG" target="_blank">@PremSaiGG</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">✎</div>
+                <div class="contact-details">
+                    <div class="contact-label">Substack</div>
+                    <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-group">
+            <a href="mailto:premsaigovardhanagiri@gmail.com" class="connect-btn">Send Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Prem Sai Govardhanagiri</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="#about" style="color: var(--secondary); text-decoration: none;">About</a> • 
+            <a href="#what-i-bring" style="color: var(--secondary); text-decoration: none;">What I Bring</a> • 
+            <a href="#coffee" style="color: var(--secondary); text-decoration: none;">Coffee</a> • 
+            <a href="#sports" style="color: var(--secondary); text-decoration: none;">Sports</a> • 
+            <a href="#interests" style="color: var(--secondary); text-decoration: none;">Interests</a> • 
+            <a href="#contact" style="color: var(--secondary); text-decoration: none;">Contact</a>
+        </p>
+    </footer>
+
+    <script>
+        const carousels = {
+            coffee: { currentIndex: 0, totalImages: 3 },
+            cooking: { currentIndex: 0, totalImages: 3 }
+        };
+
+        function initCarousels() {
+            Object.keys(carousels).forEach(category => {
+                updateCarousel(category);
+                createDots(category);
+            });
+        }
+
+        function updateCarousel(category) {
+            const carousel = document.getElementById(`${category}-carousel`);
+            const offset = -carousels[category].currentIndex * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+            updateDots(category);
+        }
+
+        function createDots(category) {
+            const dotsContainer = document.getElementById(`${category}-dots`);
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < carousels[category].totalImages; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => goToImage(category, i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots(category) {
+            const dots = document.querySelectorAll(`#${category}-dots .dot`);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousels[category].currentIndex);
+            });
+        }
+
+        function nextImage(category) {
+            if (carousels[category].currentIndex < carousels[category].totalImages - 1) {
+                carousels[category].currentIndex++;
+                updateCarousel(category);
+            }
+        }
+
+        function prevImage(category) {
+            if (carousels[category].currentIndex > 0) {
+                carousels[category].currentIndex--;
+                updateCarousel(category);
+            }
+        }
+
+        function goToImage(category, index) {
+            carousels[category].currentIndex = index;
+            updateCarousel(category);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('DOMContentLoaded', updateActiveNav);
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = '#fafafa';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderTop = '1px solid var(--border)';
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', initCarousels);
+    </script>
+</body>
+</html>
