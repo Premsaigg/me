@@ -351,6 +351,7 @@
         .carousel-container {
             overflow: hidden;
             border-radius: 8px;
+            background: white;
         }
 
         .carousel-images {
@@ -360,13 +361,16 @@
 
         .carousel-image {
             min-width: 100%;
-            height: 500px;
+            height: 0;
+            padding-bottom: 125%;
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            border: 15px solid white;
+            box-sizing: border-box;
         }
 
         .carousel-arrows {
@@ -634,7 +638,8 @@
             }
 
             .carousel-image {
-                height: 300px;
+                padding-bottom: 125%;
+                border: 10px solid white;
             }
 
             section {
@@ -696,7 +701,8 @@
             }
 
             .carousel-image {
-                height: 250px;
+                padding-bottom: 125%;
+                border: 8px solid white;
             }
 
             .contact-item {
