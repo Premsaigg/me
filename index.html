@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prem Sai Govardhanagiri</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
     <style>
         * {
             margin: 0;
@@ -120,6 +119,7 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            padding-top: 6rem;
             min-height: 80vh;
             display: flex;
             flex-direction: column;
@@ -176,40 +176,6 @@
             line-height: 1.8;
         }
 
-        .hero-social {
-            display: flex;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .hero-social a {
-            color: var(--secondary);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-        }
-
-        .hero-social a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .hero-social {
-            display: flex;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .hero-social a {
-            color: var(--secondary);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-        }
-
-        .hero-social a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
         .cta-buttons {
             display: flex;
             gap: 1rem;
@@ -239,12 +205,13 @@
             width: 300px;
             height: 300px;
             border-radius: 8px;
-            background: var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 0.9rem;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         h2 {
@@ -345,8 +312,8 @@
         }
 
         .beyond-work-item {
-            min-height: 80vh;
-            padding: 1rem 0;
+            min-height: auto;
+            padding: 3rem 0;
             display: grid;
             grid-template-columns: 250px 1fr;
             gap: 3rem;
@@ -361,18 +328,19 @@
         .beyond-work-header {
             position: sticky;
             top: 100px;
-            padding: 1.5rem 0;
+            padding: 0;
         }
 
         .beyond-work-header h4 {
             margin: 0;
+            padding-top: 0.5rem;
             font-size: 1.3rem;
             font-family: 'Playfair Display', serif;
             color: var(--primary);
         }
 
         .beyond-work-content {
-            padding-top: 0;
+            padding-top: 0.5rem;
         }
 
         .image-carousel {
@@ -392,13 +360,12 @@
 
         .carousel-image {
             min-width: 100%;
-            height: 400px;
-            background: var(--border);
+            height: 500px;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
-            font-size: 0.9rem;
             position: relative;
         }
 
@@ -589,42 +556,6 @@
             margin-bottom: 2rem;
         }
 
-        .connect-btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-            margin-right: 1rem;
-        }
-
-        .connect-btn:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .connect-btn.secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .connect-btn.secondary:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
         footer {
             background: var(--bg);
             border-top: 1px solid var(--border);
@@ -632,6 +563,21 @@
             text-align: center;
             color: var(--secondary);
             font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+                padding-top: 5rem;
+            }
+
+            .hero {
+                gap: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -644,25 +590,38 @@
             }
 
             .hero {
-                grid-template-columns: 1fr;
+                display: flex !important;
+                flex-direction: column !important;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hero-image {
+                width: 250px;
+                height: 250px;
                 margin: 0 auto;
+                order: -1 !important;
             }
 
-            .hero-social {
-                justify-content: center;
+            .hero-content {
+                order: 1 !important;
             }
 
             .cta-buttons {
                 flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
 
             .beyond-work-item {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+                min-height: auto;
             }
 
             .beyond-work-header {
@@ -674,12 +633,14 @@
                 grid-template-columns: 1fr;
             }
 
-            .contact-info {
-                grid-template-columns: 1fr;
+            .carousel-image {
+                height: 300px;
             }
 
             section {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 1.5rem;
+                padding-top: 5rem;
+                min-height: auto;
             }
 
             h1 {
@@ -692,6 +653,65 @@
 
             h3 {
                 font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+                padding-top: 5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .capability-card {
+                padding: 1.5rem;
+            }
+
+            .carousel-image {
+                height: 250px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .contact-details {
+                align-items: center;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -722,7 +742,6 @@
             <div class="hero-content">
                 <h1>Hi, I'm Prem 👋</h1>
                 <p>I spent six years in finance and product development—analyzing businesses, building digital tools, and solving problems. I'm on a career break exploring where my skills and interests align. Two areas stand out: <strong>specialty coffee</strong> and <strong>sports management</strong>—industries where business rigor meets genuine passion.</p>
-
                 <p><strong>I'm seeking 3-6 month opportunities to build hands-on capability while contributing business thinking:</strong></p>
                 <div class="cta-buttons">
                     <a href="#coffee" class="btn">☕ Coffee</a>
@@ -730,7 +749,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/profile.jpg" alt="Prem Sai" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+                <img src="images/profile.jpg" alt="Prem Sai">
             </div>
         </div>
     </section>
@@ -875,13 +894,119 @@
         <h2>Interests</h2>
         <p>Outside of work, I'm someone who gets absorbed in things—whether it's the ritual of brewing coffee, experimenting in the kitchen, getting lost in a book, or watching sports with the kind of attention that drives my friends crazy. These aren't just hobbies; they're how I stay curious and engaged with the world.</p>
 
-        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>☕ Coffee</h4></div></div><div class="beyond-work-content"><p><em>Brewing since 2021</em></p><p>I use a moka pot, Picopresso, and pour-over methods. What keeps me interested is the balance between experimenting and making a reliably good morning cup. The daily ritual feels meditative. I gravitate toward Indian coffees—sweet, low acidity, medium body.</p><div class="image-carousel"><div class="carousel-container"><div class="carousel-images" id="coffee-carousel"><div class="carousel-image" style="background-image:url('images/coffee-1.jpg');background-size:cover;background-position:center;"><div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('coffee')">←</button><button class="carousel-arrow" onclick="nextImage('coffee')">→</button></div></div><div class="carousel-image" style="background-image:url('images/coffee-2.jpg');background-size:cover;background-position:center;"><div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('coffee')">←</button><button class="carousel-arrow" onclick="nextImage('coffee')">→</button></div></div><div class="carousel-image" style="background-image:url('images/coffee-3.jpg');background-size:cover;background-position:center;"><div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('coffee')">←</button><button class="carousel-arrow" onclick="nextImage('coffee')">→</button></div></div></div></div><div class="carousel-nav"><div class="carousel-dots" id="coffee-dots"></div></div></div></div></div>
+        <div class="beyond-work-item">
+            <div class="beyond-work-header-wrapper">
+                <div class="beyond-work-header"><h4>☕ Coffee</h4></div>
+            </div>
+            <div class="beyond-work-content">
+                <p><em>Brewing since 2021</em></p>
+                <p>I use a moka pot, Picopresso, and pour-over methods. What keeps me interested is the balance between experimenting and making a reliably good morning cup. The daily ritual feels meditative. I gravitate toward Indian coffees—sweet, low acidity, medium body.</p>
+                <div class="image-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-images" id="coffee-carousel">
+                            <div class="carousel-image" style="background-image:url('images/coffee-1.jpg');">
+                                <div class="carousel-arrows">
+                                    <button class="carousel-arrow" onclick="prevImage('coffee')">←</button>
+                                    <button class="carousel-arrow" onclick="nextImage('coffee')">→</button>
+                                </div>
+                            </div>
+                            <div class="carousel-image" style="background-image:url('images/coffee-2.jpg');">
+                                <div class="carousel-arrows">
+                                    <button class="carousel-arrow" onclick="prevImage('coffee')">←</button>
+                                    <button class="carousel-arrow" onclick="nextImage('coffee')">→</button>
+                                </div>
+                            </div>
+                            <div class="carousel-image" style="background-image:url('images/coffee-3.jpg');">
+                                <div class="carousel-arrows">
+                                    <button class="carousel-arrow" onclick="prevImage('coffee')">←</button>
+                                    <button class="carousel-arrow" onclick="nextImage('coffee')">→</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <div class="carousel-dots" id="coffee-dots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>🍳 Cooking</h4></div></div><div class="beyond-work-content"><p>Exploring techniques, flavors, and the satisfaction of making something from scratch.</p><div class="image-carousel"><div class="carousel-container"><div class="carousel-images" id="cooking-carousel"><div class="carousel-image" style="background-image:url('images/cooking-1.jpg');background-size:cover;background-position:center;"><div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('cooking')">←</button><button class="carousel-arrow" onclick="nextImage('cooking')">→</button></div></div><div class="carousel-image" style="background-image:url('images/cooking-2.jpg');background-size:cover;background-position:center;"><div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('cooking')">←</button><button class="carousel-arrow" onclick="nextImage('cooking')">→</button></div></div><div class="carousel-image" style="background-image:url('images/cooking-3.jpg');background-size:cover;background-position:center;"><div class="carousel-arrows"><button class="carousel-arrow" onclick="prevImage('cooking')">←</button><button class="carousel-arrow" onclick="nextImage('cooking')">→</button></div></div></div></div><div class="carousel-nav"><div class="carousel-dots" id="cooking-dots"></div></div></div></div></div>
+        <div class="beyond-work-item">
+            <div class="beyond-work-header-wrapper">
+                <div class="beyond-work-header"><h4>🍳 Cooking</h4></div>
+            </div>
+            <div class="beyond-work-content">
+                <p>Exploring techniques, flavors, and the satisfaction of making something from scratch.</p>
+                <div class="image-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-images" id="cooking-carousel">
+                            <div class="carousel-image" style="background-image:url('images/cooking-1.jpg');">
+                                <div class="carousel-arrows">
+                                    <button class="carousel-arrow" onclick="prevImage('cooking')">←</button>
+                                    <button class="carousel-arrow" onclick="nextImage('cooking')">→</button>
+                                </div>
+                            </div>
+                            <div class="carousel-image" style="background-image:url('images/cooking-2.jpg');">
+                                <div class="carousel-arrows">
+                                    <button class="carousel-arrow" onclick="prevImage('cooking')">←</button>
+                                    <button class="carousel-arrow" onclick="nextImage('cooking')">→</button>
+                                </div>
+                            </div>
+                            <div class="carousel-image" style="background-image:url('images/cooking-3.jpg');">
+                                <div class="carousel-arrows">
+                                    <button class="carousel-arrow" onclick="prevImage('cooking')">←</button>
+                                    <button class="carousel-arrow" onclick="nextImage('cooking')">→</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <div class="carousel-dots" id="cooking-dots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>✍️ Writing</h4></div></div><div class="beyond-work-content"><p>I write about sports on Substack—fan diaries that connect personal passion with broader narratives. I follow cycling, tennis, cricket, golf, rugby, and others. Aiming for weekly posts as I build the habit.</p><ul class="content-list"><li><a href="#">Post Title One — Brief description of the post goes here</a></li><li><a href="#">Post Title Two — Brief description of the post goes here</a></li><li><a href="#">Post Title Three — Brief description of the post goes here</a></li><li><a href="#">Post Title Four — Brief description of the post goes here</a></li></ul><p><a href="https://premsaigg.substack.com/" target="_blank" style="color:var(--accent);font-weight:500">See all writing →</a></p></div></div>
+        <div class="beyond-work-item">
+            <div class="beyond-work-header-wrapper">
+                <div class="beyond-work-header"><h4>✍️ Writing</h4></div>
+            </div>
+            <div class="beyond-work-content">
+                <p>I write about sports on Substack—fan diaries that connect personal passion with broader narratives. I follow cycling, tennis, cricket, golf, rugby, and others. Aiming for weekly posts as I build the habit.</p>
+                <ul class="content-list">
+                    <li><a href="#">Post Title One — Brief description of the post goes here</a></li>
+                    <li><a href="#">Post Title Two — Brief description of the post goes here</a></li>
+                    <li><a href="#">Post Title Three — Brief description of the post goes here</a></li>
+                    <li><a href="#">Post Title Four — Brief description of the post goes here</a></li>
+                </ul>
+                <p><a href="https://premsaigg.substack.com/" target="_blank" style="color:var(--accent);font-weight:500">See all writing →</a></p>
+            </div>
+        </div>
 
-        <div class="beyond-work-item"><div class="beyond-work-header-wrapper"><div class="beyond-work-header"><h4>📚 Reading</h4></div></div><div class="beyond-work-content"><p>Currently reading and recommendations—books, newsletters, and podcasts exploring ideas that shape how I see the world.</p><div class="list-section"><h5>Currently Reading</h5><ul class="content-list"><li>Book Title — Author Name</li><li>Book Title — Author Name</li></ul></div><div class="list-section"><h5>Recommendations</h5><ul class="content-list"><li>Book Title — Author Name</li><li>Newsletter Name</li><li>Podcast Name</li><li>Book Title — Author Name</li></ul></div></div></div>
+        <div class="beyond-work-item">
+            <div class="beyond-work-header-wrapper">
+                <div class="beyond-work-header"><h4>📚 Reading</h4></div>
+            </div>
+            <div class="beyond-work-content">
+                <p>Currently reading and recommendations—books, newsletters, and podcasts exploring ideas that shape how I see the world.</p>
+                <div class="list-section">
+                    <h5>Currently Reading</h5>
+                    <ul class="content-list">
+                        <li>Book Title — Author Name</li>
+                        <li>Book Title — Author Name</li>
+                    </ul>
+                </div>
+                <div class="list-section">
+                    <h5>Recommendations</h5>
+                    <ul class="content-list">
+                        <li>Book Title — Author Name</li>
+                        <li>Newsletter Name</li>
+                        <li>Podcast Name</li>
+                        <li>Book Title — Author Name</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="section-divider"></div>
@@ -922,10 +1047,6 @@
                     <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a>
                 </div>
             </div>
-        </div>
-
-        <div class="cta-group">
-            <a href="mailto:premsaigovardhanagiri@gmail.com" class="connect-btn">Send Email</a>
         </div>
     </section>
 
