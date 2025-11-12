@@ -16,7 +16,8 @@
             --primary: #2c2c2c;
             --secondary: #666;
             --accent: #8b4513;
-            --bg: #fafafa;
+            --bg-light: #fafafa;
+            --bg-white: #ffffff;
             --border: #e0e0e0;
             --accent-light: #f5f0eb;
         }
@@ -28,7 +29,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--primary);
-            background: var(--bg);
+            background: var(--bg-white);
             line-height: 1.7;
             font-size: 16px;
         }
@@ -37,7 +38,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(250, 250, 250, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
@@ -88,21 +89,17 @@
 
         .social-icons {
             display: flex;
-            gap: 1.2rem;
-            margin-left: 2rem;
-            padding-left: 2rem;
-            border-left: 1px solid var(--border);
+            gap: 1rem;
         }
 
         .social-icons a {
             color: var(--secondary);
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .social-icons a:hover {
             color: var(--accent);
-            transform: translateY(-2px);
         }
 
         .mobile-menu-btn {
@@ -118,9 +115,8 @@
             position: relative;
             max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
-            padding-top: 6rem;
-            min-height: 80vh;
+            padding: 6rem 2rem;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -140,18 +136,28 @@
             margin-top: 80px;
         }
 
-        .section-divider {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        section:nth-child(odd) {
+            background: var(--bg-white);
         }
 
-        .section-divider::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
+        section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        section::after {
+            content: '✦  ✦  ✦';
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent);
+            font-size: 1rem;
+            opacity: 0.5;
+            letter-spacing: 0.5rem;
+        }
+
+        section:last-of-type::after {
+            display: none;
         }
 
         .hero {
@@ -176,6 +182,12 @@
             line-height: 1.8;
         }
 
+        .location {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin: 1.5rem 0;
+        }
+
         .cta-buttons {
             display: flex;
             gap: 1rem;
@@ -193,6 +205,7 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -218,7 +231,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             font-weight: 600;
-            margin-bottom: 1.25rem;
+            margin-bottom: 2rem;
             color: var(--primary);
         }
 
@@ -266,54 +279,9 @@
             color: var(--secondary);
         }
 
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .capability-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .capability-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-color: var(--accent);
-        }
-
-        .capability-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            font-size: 1.5rem;
-        }
-
-        .capability-card h3 {
-            font-size: 1.2rem;
-            margin: 0 0 1rem 0;
-        }
-
-        .capability-card p {
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
         .beyond-work-item {
-            min-height: auto;
-            padding: 3rem 0;
+            min-height: 80vh;
+            padding: 1rem 0;
             display: grid;
             grid-template-columns: 250px 1fr;
             gap: 3rem;
@@ -328,19 +296,18 @@
         .beyond-work-header {
             position: sticky;
             top: 100px;
-            padding: 0;
+            padding: 1.5rem 0;
         }
 
         .beyond-work-header h4 {
             margin: 0;
-            padding-top: 0.5rem;
             font-size: 1.3rem;
             font-family: 'Playfair Display', serif;
             color: var(--primary);
         }
 
         .beyond-work-content {
-            padding-top: 0.5rem;
+            padding-top: 0;
         }
 
         .image-carousel {
@@ -351,7 +318,6 @@
         .carousel-container {
             overflow: hidden;
             border-radius: 8px;
-            background: white;
         }
 
         .carousel-images {
@@ -361,16 +327,15 @@
 
         .carousel-image {
             min-width: 100%;
-            height: 0;
-            padding-bottom: 125%;
+            height: 400px;
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
             position: relative;
-            border: 15px solid white;
-            box-sizing: border-box;
         }
 
         .carousel-arrows {
@@ -484,6 +449,16 @@
             margin-bottom: 1rem;
         }
 
+        .capability {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .capability:last-child {
+            border-bottom: none;
+        }
+
         .callout-box {
             background: var(--accent-light);
             border-left: 4px solid var(--accent);
@@ -498,60 +473,25 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 1rem;
             margin: 2rem 0;
         }
 
-        .contact-item {
+        .contact-info p {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 0.75rem;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            border-color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.2rem;
+            gap: 0.5rem;
         }
 
         .contact-info a {
-            color: var(--secondary);
+            color: var(--accent);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .availability {
@@ -560,28 +500,61 @@
             margin-bottom: 2rem;
         }
 
+        .connect-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .connect-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .exploration-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .exploration-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .exploration-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .exploration-card h4 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .exploration-card p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
         footer {
-            background: var(--bg);
+            background: var(--bg-white);
             border-top: 1px solid var(--border);
             padding: 2rem;
             text-align: center;
             color: var(--secondary);
             font-size: 0.9rem;
-        }
-
-        @media (max-width: 1024px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            section {
-                padding: 3rem 1.5rem;
-                padding-top: 5rem;
-            }
-
-            .hero {
-                gap: 2rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -594,38 +567,21 @@
             }
 
             .hero {
-                display: flex !important;
-                flex-direction: column !important;
+                grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
             }
 
             .hero-image {
-                width: 250px;
-                height: 250px;
                 margin: 0 auto;
-                order: -1 !important;
-            }
-
-            .hero-content {
-                order: 1 !important;
             }
 
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
             }
 
             .beyond-work-item {
                 grid-template-columns: 1fr;
                 gap: 1rem;
-                min-height: auto;
             }
 
             .beyond-work-header {
@@ -633,19 +589,12 @@
                 top: 0;
             }
 
-            .capabilities-grid {
+            .exploration-cards {
                 grid-template-columns: 1fr;
             }
 
-            .carousel-image {
-                padding-bottom: 125%;
-                border: 10px solid white;
-            }
-
             section {
-                padding: 2.5rem 1.5rem;
-                padding-top: 5rem;
-                min-height: auto;
+                padding: 3rem 1.5rem;
             }
 
             h1 {
@@ -660,66 +609,6 @@
                 font-size: 1.3rem;
             }
         }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 2rem 1rem;
-                padding-top: 5rem;
-            }
-
-            h1 {
-                font-size: 1.75rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            h3 {
-                font-size: 1.2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .hero-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            .capability-card {
-                padding: 1.5rem;
-            }
-
-            .carousel-image {
-                padding-bottom: 125%;
-                border: 8px solid white;
-            }
-
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
-
-            .contact-details {
-                align-items: center;
-            }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -728,15 +617,15 @@
             <a href="#home" class="logo">Prem</a>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#what-i-bring">What I Bring</a>
-                <a href="#coffee">Coffee</a>
-                <a href="#sports">Sports</a>
+                <a href="#skills">Skills</a>
+                <a href="coffee.html">Coffee</a>
+                <a href="sports.html">Sports</a>
                 <a href="#interests">Interests</a>
                 <a href="#contact">Contact</a>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/premsaig" target="_blank" title="LinkedIn">in</a>
                     <a href="https://twitter.com/PremSaiGG" target="_blank" title="X">𝕏</a>
-                    <a href="https://premsaigg.substack.com/" target="_blank" title="Substack">✎</a>
+                    <a href="https://premsaigg.substack.com/" target="_blank" title="Substack">✍</a>
                 </div>
             </div>
             <button class="mobile-menu-btn">☰</button>
@@ -747,11 +636,11 @@
         <div class="hero">
             <div class="hero-content">
                 <h1>Hi, I'm Prem 👋</h1>
-                <p>I spent six years in finance and product development—analysing businesses, building digital tools, and solving problems. I’m currently on a career break, exploring where my skills and interests align. I’m drawn to two industries where craft, culture, and business meet - <strong>specialty coffee</strong> and <strong>sports management</strong>.</p>
-                <p><strong>I'm seeking 3-6 month opportunities to build hands-on capability while contributing business thinking:</strong></p>
+                <p>I'm curious about how things work — the systems, incentives, and trade-offs behind decisions. That curiosity took me through six years in finance and product development, where I built the ability to break down complex problems and create solutions that work.</p>
+                <p>I've stepped away to explore where my analytical rigour and product discipline can apply to areas I'm genuinely interested in. I'm looking for roles where I can contribute business thinking whilst building new capabilities — whether that's in product, operations, or management.</p>
+                <p class="location">📍 Based in Bengaluru | Available to start immediately</p>
                 <div class="cta-buttons">
-                    <a href="#coffee" class="btn">☕ Coffee</a>
-                    <a href="#sports" class="btn">🏆 Sports</a>
+                    <a href="#about" class="btn">Learn more about my background</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -760,18 +649,16 @@
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
     <section id="about">
         <h2>About</h2>
         <h3>Who I Am</h3>
-        <p>I'm drawn to understanding how things work—not just on the surface, but the <strong>underlying systems and incentives</strong> that drive decisions. This curiosity took me from finance to product development, and now towards coffee and sports management.</p>
-        <p>In finance, I analysed how businesses make money and manage risk. In product development, I learned how user needs become digital solutions. I'm looking forward to applying that <strong>systems-thinking</strong> to industries built around craft, community, and passion.</p>
+        <p>I get curious about how things actually work — the underlying systems and incentives that drive decisions, not just the surface mechanics. That's what drew me from analysing business risk in finance to building digital products.</p>
+        <p>Finance gave me the lens to understand how businesses operate. Product work gave me the tools to solve problems with technology. Now I'm looking to apply that systems-thinking approach to new domains — whether that's building products in sports tech or fintech, or working hands-on in specialty coffee operations or sports management.</p>
 
         <h3>Professional Background</h3>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2022-2025</span></div></div><div><h4 class="job-title">Product Analyst | Acuity Knowledge Partners</h4><p class="job-dates">May 2022 - August 2025</p><p>I worked on five products, with two standouts: a financial statement analysis tool that standardised company reporting for analysis, and a fund reporting platform that fed third-party intelligence tools.</p><p>The work taught me to <strong>think from first principles</strong>—understand the user problem deeply, then guide designers and engineers towards the best solution within our constraints.</p><p>Key outcomes:</p><ul><li>Took product accuracy from <strong>30% to 90%</strong> through systematic refinement</li><li>Proposed a product overhaul after comprehensive research combining user interviews, competitive analysis, and UX redesign</li><li>Managed the integration of an AI-based RFP tool with a fund data platform</li></ul><p style="margin-bottom:3rem">I worked in agile environments using Jira, Confluence, Figma, and analytics tools like Pendo.</p></div></div>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2022-2025</span></div></div><div><h4 class="job-title">Product Analyst | Acuity Knowledge Partners</h4><p class="job-dates">May 2022 - August 2025</p><p>I worked on five products, with two standouts: a financial statement analysis tool that standardised company reporting for analysis, and a fund reporting platform that fed third-party intelligence tools.</p><p>The work taught me to <strong>think from first principles</strong> — understand the user problem deeply, then guide designers and engineers towards the best solution within our constraints.</p><p>Key outcomes:</p><ul><li>Took product accuracy from <strong>30% to 90%</strong> through systematic refinement</li><li>Proposed a product overhaul after comprehensive research combining user interviews, competitive analysis, and UX redesign</li><li>Managed the integration of an AI-based RFP tool with a fund data platform</li></ul><p style="margin-bottom:3rem">I worked in agile environments using Jira, Confluence, Figma, and analytics tools like Pendo.</p></div></div>
 
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2019-2022</span></div></div><div><h4 class="job-title">Credit Analyst | Acuity Knowledge Partners</h4><p class="job-dates">September 2019 - April 2022</p><p>I analyzed borrowers for a Texas commercial bank across real estate, energy, retail, and non-profits. The role demanded <strong>precision</strong>—reviewing financial statements line by line, calculating loan covenants, and maintaining accuracy under tight deadlines using Moody's Risk Analyst and CreditLens.</p><p>I became the team’s go-to person for complicated financials and achieved the <strong>fastest progression</strong>, handling all specialised roles within 18 months.</p></div></div>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2019-2022</span></div></div><div><h4 class="job-title">Credit Analyst | Acuity Knowledge Partners</h4><p class="job-dates">September 2019 - April 2022</p><p>I analysed borrowers for a Texas commercial bank across real estate, energy, retail, and non-profits. The role demanded <strong>precision</strong> — reviewing financial statements line by line, calculating loan covenants, and maintaining accuracy under tight deadlines using Moody's Risk Analyst and CreditLens.</p><p>I became the person the team trusted with complicated financials and had the <strong>fastest progression</strong>, handling all specialised roles within 18 months.</p></div></div>
 
         <h3>Education & Credentials</h3>
         <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:50px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">Jul '23</span></div></div><div><p><strong>CFA Level 2</strong> (Passed July 2023)</p></div></div>
@@ -781,122 +668,52 @@
         <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:50px"><div style="position:absolute;right:0;top:0.5rem;bottom:0;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2015-2018</span></div></div><div><p><strong>B.Com (Hons)</strong> | Sri Sathya Sai Institute for Higher Learning</p></div></div>
 
         <h3>Making a Move</h3>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--accent)">Now</span></div></div><div><p>Three years ago, I shifted from credit analysis to product development—going from zero knowledge to shipping multiple products. That experience proved I can <strong>learn new domains quickly</strong> when I commit.</p><p>Now I'm making another deliberate move: into coffee or sports management. After six years building business and product skills, I'm ready to apply them in industries where I'm genuinely interested. I'm dedicating <strong>3-6 months to building hands-on capability</strong>—learning the craft, understanding the business, contributing where I can.</p><p>This isn't casual exploration. I'm betting on building a foundation in one of these industries for a <strong>long-term career shift</strong>.</p></div></div>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--accent)">Now</span></div></div><div><p>Three years ago, I shifted from credit analysis to product development — going from zero product knowledge to shipping multiple digital products. That transition proved I can learn new domains quickly when I commit.</p><p>Now I'm making another considered move. After six years building business and product capabilities, I'm exploring roles where those skills apply to areas I'm genuinely interested in — whether that's product work in fintech or sports tech, operations in specialty coffee, or management roles in sports organisations.</p><p>I'm on a career break, dedicating 3-6 months to building hands-on capability in whatever direction emerges. I'm committed to building real skills and contributing business value wherever I land.</p></div></div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <section id="what-i-bring">
+    <section id="skills">
         <h2>What I Bring</h2>
-        <p>Core capabilities I've developed over six years—and how they translate to new domains.</p>
+        <p>Here are the core capabilities I've developed over six years — and how they translate to new domains.</p>
 
-        <div class="capabilities-grid">
-            <div class="capability-card">
-                <div class="capability-icon">💡</div>
-                <h3>Business Analysis & Strategic Thinking</h3>
-                <p>Breaking down complex business problems and identifying what actually drives value through market analysis, user research, and competitive benchmarking.</p>
+        <div class="capability"><h3>1. Business Analysis & Strategic Thinking</h3><p>Over six years, I've built the ability to break down complex business problems and identify what actually drives value. In product work, I've conducted <strong>market analysis, user research, and competitive benchmarking</strong> that shaped product strategy and roadmap decisions.</p></div>
+
+        <div class="capability"><h3>2. Product Development & User Experience</h3><p>I worked daily with product owners and designers to translate needs into solutions. My approach: understand the problem from <strong>first principles</strong>, then guide the team towards the best answer within existing constraints.</p></div>
+
+        <div class="capability"><h3>3. Cross-Functional Coordination & Stakeholder Management</h3><p>In every team, I positioned myself as the <strong>bridge between functions</strong> — technical, design, business, and operations. I focused on understanding what motivates each person and role, then worked to find alignment that kept everyone moving towards shared goals.</p></div>
+
+        <div class="capability"><h3>4. Data-Driven Decision Making</h3><p>I've used analytics tools like Pendo to track user behaviour and product KPIs. Whilst I'm not a data scientist, I know how to <strong>ask good questions of data</strong> and use insights to guide decisions. This is a skill I'm actively developing further.</p></div>
+
+        <div class="capability"><h3>5. Process Optimisation & Quality Focus</h3><p>I instinctively look for the most efficient path to accomplish work, and that tendency often improves how entire teams operate. I've driven <strong>efficiency gains of 15-50%</strong> in different contexts whilst maintaining accuracy — even under pressure.</p></div>
+
+        <div class="capability"><h3>6. Communication & Documentation</h3><p>I've worked across functions daily — writing requirements, presenting to stakeholders, and facilitating workshops. Whether explaining credit risk to bankers or translating user needs to engineering teams, I focus on making complex ideas clear and actionable.</p></div>
+    </section>
+
+    <section id="exploring">
+        <h2>Currently Exploring</h2>
+        <p>I'm on a career break, taking 3-6 months to explore where my capabilities apply to domains I'm genuinely passionate about.</p>
+        <p>Two areas particularly interest me: specialty coffee and sports management. Both represent the intersection of business rigour and genuine passion — industries where analytical thinking, operational excellence, and product discipline create tangible value.</p>
+
+        <div class="exploration-cards">
+            <div class="exploration-card">
+                <h4>☕ Specialty Coffee</h4>
+                <p>I've been home brewing since 2021, fascinated by the science and craft of coffee. I'm exploring production, operations, quality control, and business development roles across the coffee value chain — from processing and roasting to supply chain and product development.</p>
+                <a href="coffee.html" class="btn">View full coffee pitch →</a>
             </div>
 
-            <div class="capability-card">
-                <div class="capability-icon">🧩</div>
-                <h3>Product Development & User Experience</h3>
-                <p>Translating needs into solutions by understanding problems from first principles, then guiding teams towards optimal answers within constraints.</p>
-            </div>
-
-            <div class="capability-card">
-                <div class="capability-icon">👥</div>
-                <h3>Cross-Functional Coordination</h3>
-                <p>Bridging technical, design, business, and operations teams by understanding motivations and finding alignment towards shared goals.</p>
-            </div>
-
-            <div class="capability-card">
-                <div class="capability-icon">📊</div>
-                <h3>Data-Driven Decision Making</h3>
-                <p>Tracking behaviour and KPIs using analytics tools, asking good questions of data, and using insights to guide strategic decisions.</p>
-            </div>
-
-            <div class="capability-card">
-                <div class="capability-icon">⚙️</div>
-                <h3>Process Optimisation & Quality Focus</h3>
-                <p>Finding efficient paths to accomplish work while maintaining accuracy—driving 15-50% efficiency gains across different contexts.</p>
+            <div class="exploration-card">
+                <h4>🏆 Sports Management</h4>
+                <p>I've followed sports passionately for years and I'm striving to write regularly about cycling, tennis, cricket, golf, and rugby on Substack. I'm exploring operations, fan experience, commercial partnerships, and analytics roles in sports organisations or sports tech companies.</p>
+                <a href="sports.html" class="btn">View full sports pitch →</a>
             </div>
         </div>
+
+        <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">I'm also open to product management and business analyst roles in fintech, sports tech, or other domains where I can apply my analytical and product capabilities whilst building expertise in areas that interest me.</p>
+        <p><strong>The through-line across everything: roles where business thinking meets craft, community, and passion.</strong></p>
     </section>
-
-    <div class="section-divider"></div>
-
-    <section id="coffee">
-        <h2>☕ My Coffee Pitch</h2>
-
-        <h3>What I'm Looking For</h3>
-        <p>I'm seeking <strong>3-6 month engagements</strong> with coffee companies working across the value chain. I'm interested in non-barista roles—production assistant, processing support, product development, operations—where I'm actually working with coffee, building real skills in the craft and business.</p>
-        <p>Open to full-time or part-time depending on the role, with modest compensation reflecting the learning opportunity and the business value I can contribute.</p>
-
-        <h3>Why Coffee</h3>
-        <p>I started brewing at home in 2021, just trying to make better morning coffee. The ritual stuck, and I got curious about the complexity—how each step from cherry to cup changes what you taste. It's a beautiful <strong>intersection of science and craft</strong>.</p>
-        <p>What draws me to the business is the energy in India's coffee scene. The post-third wave boom is creating opportunities to build <strong>community and culture</strong>. I admire roasters and cafes like Benki, Nerlu, Drip and Drop, Practically Sobar, Naivo, and Rossette—businesses building brands beyond just selling coffee.</p>
-        
-        <div class="callout-box">I want hands-on skills, not theoretical knowledge.</div>
-        
-        <p>I want to understand coffee at each transformation stage—sourcing, processing, roasting, brewing.</p>
-
-        <h3>What I Bring to Coffee</h3>
-        <p>My finance and product background translates directly to coffee operations—whether that means analyzing unit economics, optimizing supply chain workflows, designing customer experiences, or applying the same quality discipline I use in home brewing to commercial operations.</p>
-
-        <h3>Roles I Can Contribute To</h3>
-        <ul>
-            <li><strong>Production & Processing:</strong> Farm support, post-harvest processing, quality control</li>
-            <li><strong>Roasting Operations:</strong> Batch management, quality testing, production assistance</li>
-            <li><strong>Supply Chain & Sourcing:</strong> Coordination, logistics, supplier relationships</li>
-            <li><strong>Business Operations:</strong> Cost analysis, inventory management, process improvement</li>
-            <li><strong>Product Development:</strong> New offerings, retail strategy, customer experience design</li>
-        </ul>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section id="sports">
-        <h2>🏆 My Sports Management Pitch</h2>
-
-        <h3>What I'm Looking For</h3>
-        <p>I'm seeking <strong>3-6 month opportunities</strong> in sports management where I can contribute to operations, fan experience, commercial roles, or grassroots development. I'm open to any sport (though not football), flexible on full-time or part-time arrangements, with modest compensation that reflects both the learning opportunity and the business skills I bring.</p>
-
-        <h3>Why Sports</h3>
-        <p>I've followed cricket since childhood. Tennis hooked me after watching Fedal battle it out. Cycling pulled me in during the 2020 Tour de France. Rugby, golf, and others followed—each revealing something different about <strong>competition, strategy, and human performance</strong>.</p>
-        <p>What draws me beyond fandom is the business machinery behind this—how tournaments are executed, fan experiences crafted, teams building culture alongside commercial success, and grassroots development creating pathways.</p>
-        
-        <div class="callout-box">Sport has the power to transform communities and lives.</div>
-        
-        <p>I admire how Australian cricket, South African rugby, and the All Blacks built sustained excellence through systems, culture, and management. That <strong>combination of passion and professionalism</strong> is what I want to help build.</p>
-
-        <h3>What I Bring to Sports</h3>
-        <p>My business analysis skills (developed through finance and CFA studies), product development experience, and operational coordination translate directly to sports management—whether that's structuring commercial partnerships, building fan engagement platforms, executing tournament operations, or analyzing performance and business metrics.</p>
-
-        <h3>My Writing</h3>
-        <p>I write about sports on Substack—bringing together fan passion with bigger-picture thinking across cycling, tennis, cricket, golf, rugby, and others. It's my way of deepening how I think about the sports I follow.</p>
-        
-        <ul class="content-list">
-            <li><a href="https://premsaigg.substack.com/p/pogacar-and-predictability">Pogacar and Predictability — What the dominance of Pogacar means for this fan</a></li>
-            <li><a href="https://premsaigg.substack.com/p/a-week-for-ages">A week for ages — There are months when little happens, and then there are weeks where so much happens</a></li>
-        </ul>
-        
-        <p><a href="https://premsaigg.substack.com/" target="_blank" style="color: var(--accent); font-weight: 500;">See all writing →</a></p>
-
-        <h3>Roles I Can Contribute To</h3>
-        <ul>
-            <li><strong>Tournament Operations:</strong> Event logistics, venue coordination, execution, live problem-solving</li>
-            <li><strong>Fan Experience:</strong> Stadium experience design, digital engagement, community building</li>
-            <li><strong>Commercial Operations:</strong> Sponsorship management, partnership coordination, account management</li>
-            <li><strong>Grassroots Development:</strong> Community programs, talent identification, local engagement</li>
-            <li><strong>Business Analysis:</strong> Performance metrics, commercial strategy, operational efficiency</li>
-        </ul>
-    </section>
-
-    <div class="section-divider"></div>
 
     <section id="interests">
         <h2>Interests</h2>
-        <p>Outside of work, I'm someone who gets absorbed in things—whether it's the ritual of brewing coffee, experimenting in the kitchen, getting lost in a book, or watching sports with the kind of attention that drives my friends crazy. These aren't just hobbies; they're how I stay curious and engaged with the world.</p>
+        <p>Outside work, I'm someone who gets absorbed in things — coffee brewing, cooking, sports, reading, writing. These aren't just hobbies; they're how I stay curious and engaged with the world.</p>
 
         <div class="beyond-work-item">
             <div class="beyond-work-header-wrapper">
@@ -904,7 +721,7 @@
             </div>
             <div class="beyond-work-content">
                 <p><em>Brewing since 2021</em></p>
-                <p>I use a moka pot, Picopresso, and pour-over methods. What keeps me interested is the balance between experimenting and making a reliably good morning cup. The daily ritual feels meditative. I gravitate towards Indian coffees—sweet, low acidity, medium body.</p>
+                <p>I use a moka pot, Picopresso, and pour-over methods. What keeps me interested is the balance between experimenting and making a reliably good morning cup. The daily ritual feels meditative. I gravitate towards Indian coffees — sweet, low acidity, medium body.</p>
                 <div class="image-carousel">
                     <div class="carousel-container">
                         <div class="carousel-images" id="coffee-carousel">
@@ -988,7 +805,7 @@
                 <div class="beyond-work-header"><h4>✍️ Writing</h4></div>
             </div>
             <div class="beyond-work-content">
-                <p>I write about sports on Substack—fan diaries that connect personal passion with broader narratives. I follow cycling, tennis, cricket, golf, rugby, and others. I aim for weekly posts as I build the habit.</p>
+                <p>I write about sports on Substack — fan diaries that connect personal passion with broader narratives. I follow cycling, tennis, cricket, golf, rugby, and others. I'm aiming for weekly posts as I build the habit.</p>
                 <ul class="content-list">
                     <li><a href="https://premsaigg.substack.com/p/pogacar-and-predictability">Pogacar and Predictability — What the dominance of Pogacar means for this fan</a></li>
                     <li><a href="https://premsaigg.substack.com/p/a-week-for-ages">A week for ages — There are months when little happens, and then there are weeks where so much happens</a></li>
@@ -1002,7 +819,7 @@
                 <div class="beyond-work-header"><h4>📚 Reading</h4></div>
             </div>
             <div class="beyond-work-content">
-                <p>Currently reading and recommendations—books, newsletters, and podcasts exploring ideas that shape how I see the world.</p>
+                <p>Currently reading and recommendations — books, newsletters, and podcasts exploring ideas that shape how I see the world.</p>
                 <div class="list-section">
                     <h5>Currently Reading</h5>
                     <ul class="content-list">
@@ -1026,54 +843,28 @@
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
     <section id="contact">
         <h2>Let's Connect</h2>
-        <p class="availability">Based in Bengaluru and available to start immediately</p>
+        <p class="availability">Available to start immediately</p>
         
         <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-icon">✉️</div>
-                <div class="contact-details">
-                    <div class="contact-label">Email</div>
-                    <a href="mailto:premsaigovardhanagiri@gmail.com">premsaigovardhanagiri@gmail.com</a>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <div class="contact-icon">in</div>
-                <div class="contact-details">
-                    <div class="contact-label">LinkedIn</div>
-                    <a href="https://www.linkedin.com/in/premsaig" target="_blank">linkedin.com/in/premsaig</a>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <div class="contact-icon">𝕏</div>
-                <div class="contact-details">
-                    <div class="contact-label">X (Twitter)</div>
-                    <a href="https://twitter.com/PremSaiGG" target="_blank">@PremSaiGG</a>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <div class="contact-icon">✎</div>
-                <div class="contact-details">
-                    <div class="contact-label">Substack</div>
-                    <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a>
-                </div>
-            </div>
+            <p>📧 <strong>Email:</strong> <a href="mailto:premsaigovardhanagiri@gmail.com">premsaigovardhanagiri@gmail.com</a></p>
+            <p>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/premsaig" target="_blank">linkedin.com/in/premsaig</a></p>
+            <p>𝕏 <strong>X:</strong> <a href="https://twitter.com/PremSaiGG" target="_blank">@PremSaiGG</a></p>
+            <p>✍️ <strong>Substack:</strong> <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a></p>
+            <p>📍 <strong>Location:</strong> Bengaluru</p>
         </div>
+
+        <a href="mailto:premsaigovardhanagiri@gmail.com" class="connect-btn">Connect with me →</a>
     </section>
 
     <footer>
         <p>&copy; 2025 Prem Sai Govardhanagiri</p>
         <p style="margin-top: 0.5rem; font-size: 0.85rem;">
             <a href="#about" style="color: var(--secondary); text-decoration: none;">About</a> • 
-            <a href="#what-i-bring" style="color: var(--secondary); text-decoration: none;">What I Bring</a> • 
-            <a href="#coffee" style="color: var(--secondary); text-decoration: none;">Coffee</a> • 
-            <a href="#sports" style="color: var(--secondary); text-decoration: none;">Sports</a> • 
+            <a href="#skills" style="color: var(--secondary); text-decoration: none;">Skills</a> • 
+            <a href="coffee.html" style="color: var(--secondary); text-decoration: none;">Coffee</a> • 
+            <a href="sports.html" style="color: var(--secondary); text-decoration: none;">Sports</a> • 
             <a href="#interests" style="color: var(--secondary); text-decoration: none;">Interests</a> • 
             <a href="#contact" style="color: var(--secondary); text-decoration: none;">Contact</a>
         </p>
@@ -1198,7 +989,7 @@
                 navLinks.style.top = '100%';
                 navLinks.style.left = '0';
                 navLinks.style.right = '0';
-                navLinks.style.background = '#fafafa';
+                navLinks.style.background = 'white';
                 navLinks.style.padding = '1rem';
                 navLinks.style.borderTop = '1px solid var(--border)';
             }
