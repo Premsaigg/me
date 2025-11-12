@@ -459,6 +459,51 @@
             border-bottom: none;
         }
 
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .capability-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .capability-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .capability-card h3 {
+            font-size: 1.2rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .capability-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         .callout-box {
             background: var(--accent-light);
             border-left: 4px solid var(--accent);
@@ -593,6 +638,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
             section {
                 padding: 3rem 1.5rem;
             }
@@ -675,17 +724,43 @@
         <h2>What I Bring</h2>
         <p>Here are the core capabilities I've developed over six years — and how they translate to new domains.</p>
 
-        <div class="capability"><h3>1. Business Analysis & Strategic Thinking</h3><p>Over six years, I've built the ability to break down complex business problems and identify what actually drives value. In product work, I've conducted <strong>market analysis, user research, and competitive benchmarking</strong> that shaped product strategy and roadmap decisions.</p></div>
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <div class="capability-icon">💡</div>
+                <h3>Business Analysis & Strategic Thinking</h3>
+                <p>Breaking down complex business problems and identifying what actually drives value through market analysis, user research, and competitive benchmarking.</p>
+            </div>
 
-        <div class="capability"><h3>2. Product Development & User Experience</h3><p>I worked daily with product owners and designers to translate needs into solutions. My approach: understand the problem from <strong>first principles</strong>, then guide the team towards the best answer within existing constraints.</p></div>
+            <div class="capability-card">
+                <div class="capability-icon">🧩</div>
+                <h3>Product Development & User Experience</h3>
+                <p>Translating needs into solutions by understanding problems from first principles, then guiding teams towards optimal answers within constraints.</p>
+            </div>
 
-        <div class="capability"><h3>3. Cross-Functional Coordination & Stakeholder Management</h3><p>In every team, I positioned myself as the <strong>bridge between functions</strong> — technical, design, business, and operations. I focused on understanding what motivates each person and role, then worked to find alignment that kept everyone moving towards shared goals.</p></div>
+            <div class="capability-card">
+                <div class="capability-icon">👥</div>
+                <h3>Cross-Functional Coordination</h3>
+                <p>Bridging technical, design, business, and operations teams by understanding motivations and finding alignment towards shared goals.</p>
+            </div>
 
-        <div class="capability"><h3>4. Data-Driven Decision Making</h3><p>I've used analytics tools like Pendo to track user behaviour and product KPIs. Whilst I'm not a data scientist, I know how to <strong>ask good questions of data</strong> and use insights to guide decisions. This is a skill I'm actively developing further.</p></div>
+            <div class="capability-card">
+                <div class="capability-icon">📊</div>
+                <h3>Data-Driven Decision Making</h3>
+                <p>Tracking behaviour and KPIs using analytics tools, asking good questions of data, and using insights to guide strategic decisions.</p>
+            </div>
 
-        <div class="capability"><h3>5. Process Optimisation & Quality Focus</h3><p>I instinctively look for the most efficient path to accomplish work, and that tendency often improves how entire teams operate. I've driven <strong>efficiency gains of 15-50%</strong> in different contexts whilst maintaining accuracy — even under pressure.</p></div>
+            <div class="capability-card">
+                <div class="capability-icon">⚙️</div>
+                <h3>Process Optimisation & Quality Focus</h3>
+                <p>Finding efficient paths to accomplish work while maintaining accuracy — driving 15-50% efficiency gains across different contexts.</p>
+            </div>
 
-        <div class="capability"><h3>6. Communication & Documentation</h3><p>I've worked across functions daily — writing requirements, presenting to stakeholders, and facilitating workshops. Whether explaining credit risk to bankers or translating user needs to engineering teams, I focus on making complex ideas clear and actionable.</p></div>
+            <div class="capability-card">
+                <div class="capability-icon">💬</div>
+                <h3>Communication & Documentation</h3>
+                <p>Writing requirements, presenting to stakeholders, and facilitating workshops — making complex ideas clear and actionable across functions.</p>
+            </div>
+        </div>
     </section>
 
     <section id="exploring">
@@ -848,14 +923,13 @@
         <p class="availability">Available to start immediately</p>
         
         <div class="contact-info">
-            <p>📧 <strong>Email:</strong> <a href="mailto:premsaigovardhanagiri@gmail.com">premsaigovardhanagiri@gmail.com</a></p>
+            <p>📧 <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#067674636b75676f6169706774626e676867616f746f46616b676f6a2865696b"><span class="__cf_email__" data-cfemail="720200171f01131b151d041300161a131c13151b001b32151f131b1e5c111d1f">[email&#160;protected]</span></a></p>
             <p>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/premsaig" target="_blank">linkedin.com/in/premsaig</a></p>
             <p>𝕏 <strong>X:</strong> <a href="https://twitter.com/PremSaiGG" target="_blank">@PremSaiGG</a></p>
             <p>✍️ <strong>Substack:</strong> <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a></p>
             <p>📍 <strong>Location:</strong> Bengaluru</p>
         </div>
 
-        <a href="mailto:premsaigovardhanagiri@gmail.com" class="connect-btn">Connect with me →</a>
     </section>
 
     <footer>
@@ -870,7 +944,7 @@
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const carousels = {
             coffee: { currentIndex: 0, totalImages: 5 },
             cooking: { currentIndex: 0, totalImages: 3 }
@@ -988,14 +1062,4 @@
                 navLinks.style.position = 'absolute';
                 navLinks.style.top = '100%';
                 navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.padding = '1rem';
-                navLinks.style.borderTop = '1px solid var(--border)';
-            }
-        });
-
-        window.addEventListener('DOMContentLoaded', initCarousels);
-    </script>
-</body>
-</html>
+                navL
