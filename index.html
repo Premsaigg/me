@@ -16,8 +16,7 @@
             --primary: #2c2c2c;
             --secondary: #666;
             --accent: #8b4513;
-            --bg-light: #fafafa;
-            --bg-white: #ffffff;
+            --bg: #fafafa;
             --border: #e0e0e0;
             --accent-light: #f5f0eb;
         }
@@ -29,7 +28,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--primary);
-            background: var(--bg-white);
+            background: var(--bg);
             line-height: 1.7;
             font-size: 16px;
         }
@@ -38,7 +37,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(250, 250, 250, 0.98);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
@@ -89,17 +88,21 @@
 
         .social-icons {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
+            margin-left: 2rem;
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
         }
 
         .social-icons a {
             color: var(--secondary);
             font-size: 1.1rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .social-icons a:hover {
             color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .mobile-menu-btn {
@@ -115,8 +118,9 @@
             position: relative;
             max-width: 900px;
             margin: 0 auto;
-            padding: 6rem 2rem;
-            min-height: 100vh;
+            padding: 4rem 2rem;
+            padding-top: 6rem;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -136,28 +140,18 @@
             margin-top: 80px;
         }
 
-        section:nth-child(odd) {
-            background: var(--bg-white);
+        .section-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        section:nth-child(even) {
-            background: var(--bg-light);
-        }
-
-        section::after {
-            content: '✦  ✦  ✦';
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--accent);
-            font-size: 1rem;
-            opacity: 0.5;
-            letter-spacing: 0.5rem;
-        }
-
-        section:last-of-type::after {
-            display: none;
+        .section-divider::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
         }
 
         .hero {
@@ -182,38 +176,6 @@
             line-height: 1.8;
         }
 
-        .location {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            margin: 1.5rem 0;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            padding: 0.9rem 1.8rem;
-            border: 2px solid var(--accent);
-            background: transparent;
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
-        }
-
         .hero-image {
             width: 300px;
             height: 300px;
@@ -231,7 +193,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             color: var(--primary);
         }
 
@@ -279,11 +241,85 @@
             color: var(--secondary);
         }
 
-        .beyond-work-item {
-            min-height: 80vh;
-            padding: 1rem 0;
+        .capabilities-grid {
             display: grid;
-            grid-template-columns: 250px 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .capability-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .capability-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .capability-card h3 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .capability-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .exploration-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .exploration-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .exploration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .exploration-card h4 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .beyond-work-item {
+            min-height: 60vh;
+            padding: 2rem 0;
+            display: grid;
+            grid-template-columns: 200px 1fr;
             gap: 3rem;
             align-items: start;
         }
@@ -295,8 +331,8 @@
 
         .beyond-work-header {
             position: sticky;
-            top: 100px;
-            padding: 1.5rem 0;
+            top: 120px;
+            padding: 1rem 0;
         }
 
         .beyond-work-header h4 {
@@ -330,11 +366,6 @@
             height: 400px;
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 0.9rem;
             position: relative;
         }
 
@@ -418,12 +449,6 @@
             border-bottom: 1px solid var(--border);
             color: var(--secondary);
             transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .content-list li:hover {
-            color: var(--accent);
-            padding-left: 1rem;
         }
 
         .content-list li::before {
@@ -438,6 +463,10 @@
             text-decoration: none;
         }
 
+        .content-list a:hover {
+            color: var(--accent);
+        }
+
         .list-section {
             margin: 2rem 0;
         }
@@ -447,72 +476,6 @@
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 1rem;
-        }
-
-        .capability {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .capability:last-child {
-            border-bottom: none;
-        }
-
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .capability-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .capability-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-color: var(--accent);
-        }
-
-        .capability-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            font-size: 1.5rem;
-        }
-
-        .capability-card h3 {
-            font-size: 1.2rem;
-            margin: 0 0 1rem 0;
-        }
-
-        .capability-card p {
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .callout-box {
-            background: var(--accent-light);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--primary);
         }
 
         .contact-info {
@@ -545,56 +508,8 @@
             margin-bottom: 2rem;
         }
 
-        .connect-btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .connect-btn:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .exploration-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .exploration-card {
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .exploration-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .exploration-card h4 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .exploration-card p {
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
         footer {
-            background: var(--bg-white);
+            background: white;
             border-top: 1px solid var(--border);
             padding: 2rem;
             text-align: center;
@@ -618,10 +533,6 @@
 
             .hero-image {
                 margin: 0 auto;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
             }
 
             .beyond-work-item {
@@ -688,9 +599,6 @@
                 <p>I'm curious about how things work — the systems, incentives, and trade-offs behind decisions. That curiosity took me through six years in finance and product development, where I built the ability to break down complex problems and create solutions that work.</p>
                 <p>I've stepped away to explore where my analytical rigour and product discipline can apply to areas I'm genuinely interested in. I'm looking for roles where I can contribute business thinking whilst building new capabilities — whether that's in product, operations, or management.</p>
                 <p class="location">📍 Based in Bengaluru | Available to start immediately</p>
-                <div class="cta-buttons">
-                    <a href="#about" class="btn">Learn more about my background</a>
-                </div>
             </div>
             <div class="hero-image">
                 <img src="images/profile.jpg" alt="Prem Sai">
@@ -698,11 +606,13 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section id="about">
         <h2>About</h2>
         <h3>Who I Am</h3>
         <p>I get curious about how things actually work — the underlying systems and incentives that drive decisions, not just the surface mechanics. That's what drew me from analysing business risk in finance to building digital products.</p>
-        <p>Finance gave me the lens to understand how businesses operate. Product work gave me the tools to solve problems with technology. Now I'm looking to apply that systems-thinking approach to new domains — whether that's building products in sports tech or fintech, or working hands-on in specialty coffee operations or sports management.</p>
+        <p>Finance gave me the lens to understand how businesses operate. Product work gave me the tools to solve problems with technology. Now I'm looking to apply that systems-thinking approach to new domains — whether that's building products in sports tech or fintech, or working hands-on in speciality coffee operations or sports management.</p>
 
         <h3>Professional Background</h3>
         <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;top:0.5rem;bottom:-3rem;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2022-2025</span></div></div><div><h4 class="job-title">Product Analyst | Acuity Knowledge Partners</h4><p class="job-dates">May 2022 - August 2025</p><p>I worked on five products, with two standouts: a financial statement analysis tool that standardised company reporting for analysis, and a fund reporting platform that fed third-party intelligence tools.</p><p>The work taught me to <strong>think from first principles</strong> — understand the user problem deeply, then guide designers and engineers towards the best solution within our constraints.</p><p>Key outcomes:</p><ul><li>Took product accuracy from <strong>30% to 90%</strong> through systematic refinement</li><li>Proposed a product overhaul after comprehensive research combining user interviews, competitive analysis, and UX redesign</li><li>Managed the integration of an AI-based RFP tool with a fund data platform</li></ul><p style="margin-bottom:3rem">I worked in agile environments using Jira, Confluence, Figma, and analytics tools like Pendo.</p></div></div>
@@ -717,8 +627,10 @@
         <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:50px"><div style="position:absolute;right:0;top:0.5rem;bottom:0;width:2px;background:var(--border)"></div><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--secondary)">2015-2018</span></div></div><div><p><strong>B.Com (Hons)</strong> | Sri Sathya Sai Institute for Higher Learning</p></div></div>
 
         <h3>Making a Move</h3>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--accent)">Now</span></div></div><div><p>Three years ago, I shifted from credit analysis to product development — going from zero product knowledge to shipping multiple digital products. That transition proved I can learn new domains quickly when I commit.</p><p>Now I'm making another considered move. After six years building business and product capabilities, I'm exploring roles where those skills apply to areas I'm genuinely interested in — whether that's product work in fintech or sports tech, operations in specialty coffee, or management roles in sports organisations.</p><p>I'm on a career break, dedicating 3-6 months to building hands-on capability in whatever direction emerges. I'm committed to building real skills and contributing business value wherever I land.</p></div></div>
+        <div style="display:grid;grid-template-columns:100px 1fr;gap:3rem;margin:2rem 0"><div style="position:relative;min-height:100px"><div style="position:absolute;right:0;transform:translateX(50%);top:0.5rem"><div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div></div><div style="position:absolute;left:0;top:0"><span style="font-weight:600;font-size:0.85rem;color:var(--accent)">Now</span></div></div><div><p>Three years ago, I shifted from credit analysis to product development — going from zero product knowledge to shipping multiple digital products. That transition proved I can learn new domains quickly when I commit.</p><p>Now I'm making another considered move. After six years building business and product capabilities, I'm exploring roles where those skills apply to areas I'm genuinely interested in — whether that's product work in fintech or sports tech, operations in speciality coffee, or management roles in sports organisations.</p><p>I'm on a career break, dedicating 3-6 months to building hands-on capability in whatever direction emerges. I'm committed to building real skills and contributing business value wherever I land.</p></div></div>
     </section>
+
+    <div class="section-divider"></div>
 
     <section id="skills">
         <h2>What I Bring</h2>
@@ -752,7 +664,7 @@
             <div class="capability-card">
                 <div class="capability-icon">⚙️</div>
                 <h3>Process Optimisation & Quality Focus</h3>
-                <p>Finding efficient paths to accomplish work while maintaining accuracy — driving 15-50% efficiency gains across different contexts.</p>
+                <p>Finding efficient paths to accomplish work whilst maintaining accuracy — driving 15-50% efficiency gains across different contexts.</p>
             </div>
 
             <div class="capability-card">
@@ -763,28 +675,30 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section id="exploring">
         <h2>Currently Exploring</h2>
         <p>I'm on a career break, taking 3-6 months to explore where my capabilities apply to domains I'm genuinely passionate about.</p>
-        <p>Two areas particularly interest me: specialty coffee and sports management. Both represent the intersection of business rigour and genuine passion — industries where analytical thinking, operational excellence, and product discipline create tangible value.</p>
+        <p>Two areas particularly interest me: speciality coffee and sports management. Both represent the intersection of business rigour and genuine passion — industries where analytical thinking, operational excellence, and product discipline create tangible value.</p>
 
         <div class="exploration-cards">
             <div class="exploration-card">
-                <h4>☕ Specialty Coffee</h4>
+                <h4>☕ Speciality Coffee</h4>
                 <p>I've been home brewing since 2021, fascinated by the science and craft of coffee. I'm exploring production, operations, quality control, and business development roles across the coffee value chain — from processing and roasting to supply chain and product development.</p>
-                <a href="coffee.html" class="btn">View full coffee pitch →</a>
             </div>
 
             <div class="exploration-card">
                 <h4>🏆 Sports Management</h4>
                 <p>I've followed sports passionately for years and I'm striving to write regularly about cycling, tennis, cricket, golf, and rugby on Substack. I'm exploring operations, fan experience, commercial partnerships, and analytics roles in sports organisations or sports tech companies.</p>
-                <a href="sports.html" class="btn">View full sports pitch →</a>
             </div>
         </div>
 
         <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">I'm also open to product management and business analyst roles in fintech, sports tech, or other domains where I can apply my analytical and product capabilities whilst building expertise in areas that interest me.</p>
         <p><strong>The through-line across everything: roles where business thinking meets craft, community, and passion.</strong></p>
     </section>
+
+    <div class="section-divider"></div>
 
     <section id="interests">
         <h2>Interests</h2>
@@ -898,38 +812,36 @@
                 <div class="list-section">
                     <h5>Currently Reading</h5>
                     <ul class="content-list">
-                        <li>Gods, Guns and Missionaries — Manu Pillai</li>
-                        <li>The God of Small Things — Arundhati Roy</li>
+                        <li>Book Title — Author Name</li>
+                        <li>Book Title — Author Name</li>
                     </ul>
                 </div>
                 <div class="list-section">
                     <h5>Recommendations</h5>
                     <ul class="content-list">
-                        <li><a href="https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine" target="_blank">Matt Levine's Money Stuff</a> — Finance from first principals</li>
-                        <li><a href="https://publicpolicy.substack.com/" target="_blank">Anticipating the Unintended</a> — Public Policy Newsletter</li>
-                        <li><a href="https://adamtooze.substack.com/" target="_blank">Chartbook</a> — All things policy crisis</li>
-                        <li><a href="https://www.ggd.world/" target="_blank">The Great Gender Divergence</a> — Why has the world become more gender equal? Why are some societies more gender equal than others?</li>
-                        <li><a href="https://seenunseen.in/" target="_blank">The Seen and the Unseen</a> — A Longform podcast</li>
-                        <li>Desperately Seeking Shah Rukh — Shrayana Bhattacharya</li>
-                        <li>The Sentence — Gautam Bhatia</li>
+                        <li>Book Title — Author Name</li>
+                        <li>Newsletter Name</li>
+                        <li>Podcast Name</li>
+                        <li>Book Title — Author Name</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section id="contact">
         <h2>Let's Connect</h2>
         <p class="availability">Available to start immediately</p>
         
         <div class="contact-info">
-            <p>📧 <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#067674636b75676f6169706774626e676867616f746f46616b676f6a2865696b"><span class="__cf_email__" data-cfemail="720200171f01131b151d041300161a131c13151b001b32151f131b1e5c111d1f">[email&#160;protected]</span></a></p>
+            <p>📧 <strong>Email:</strong> <a href="mailto:premsaigovardhanagiri@gmail.com">premsaigovardhanagiri@gmail.com</a></p>
             <p>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/premsaig" target="_blank">linkedin.com/in/premsaig</a></p>
             <p>𝕏 <strong>X:</strong> <a href="https://twitter.com/PremSaiGG" target="_blank">@PremSaiGG</a></p>
             <p>✍️ <strong>Substack:</strong> <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a></p>
             <p>📍 <strong>Location:</strong> Bengaluru</p>
         </div>
-
     </section>
 
     <footer>
@@ -944,7 +856,7 @@
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const carousels = {
             coffee: { currentIndex: 0, totalImages: 5 },
             cooking: { currentIndex: 0, totalImages: 3 }
@@ -1062,4 +974,14 @@
                 navLinks.style.position = 'absolute';
                 navLinks.style.top = '100%';
                 navLinks.style.left = '0';
-                navL
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(250, 250, 250, 0.98)';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderTop = '1px solid var(--border)';
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', initCarousels);
+    </script>
+</body>
+</html>
