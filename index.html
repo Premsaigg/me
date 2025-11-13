@@ -349,11 +349,13 @@
         .image-carousel {
             position: relative;
             margin: 1.5rem 0;
+            width: 100%;
         }
 
         .carousel-container {
             overflow: hidden;
             border-radius: 8px;
+            width: 100%;
         }
 
         .carousel-images {
@@ -363,7 +365,9 @@
 
         .carousel-image {
             min-width: 100%;
-            height: 400px;
+            width: 100%;
+            height: 0;
+            padding-bottom: 125%; /* 2837/2268 = 1.25 ratio for portrait images */
             background-size: cover;
             background-position: center;
             position: relative;
@@ -812,17 +816,20 @@
                 <div class="list-section">
                     <h5>Currently Reading</h5>
                     <ul class="content-list">
-                        <li>Book Title — Author Name</li>
-                        <li>Book Title — Author Name</li>
+                        <li>Gods, Guns and Missionaries — Manu Pillai</li>
+                        <li>The God of Small Things — Arundhati Roy</li>
                     </ul>
                 </div>
                 <div class="list-section">
                     <h5>Recommendations</h5>
                     <ul class="content-list">
-                        <li>Book Title — Author Name</li>
-                        <li>Newsletter Name</li>
-                        <li>Podcast Name</li>
-                        <li>Book Title — Author Name</li>
+                        <li><a href="https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine" target="_blank">Matt Levine's Money Stuff</a></li>
+                        <li><a href="https://publicpolicy.substack.com/" target="_blank">Anticipating the Unintended — Public Policy Newsletter</a></li>
+                        <li><a href="https://adamtooze.substack.com/" target="_blank">Chartbook</a></li>
+                        <li><a href="https://www.ggd.world/" target="_blank">The Great Gender Divergence — Why has the world become more gender equal? Why are some societies more gender equal than others?</a></li>
+                        <li><a href="https://seenunseen.in/" target="_blank">The Seen and the Unseen — A Longform podcast</a></li>
+                        <li>Desperately Seeking Shah Rukh — Shrayana Bhattacharya</li>
+                        <li>The Sentence — Gautam Bhatia</li>
                     </ul>
                 </div>
             </div>
@@ -836,7 +843,7 @@
         <p class="availability">Available to start immediately</p>
         
         <div class="contact-info">
-            <p>📧 <strong>Email:</strong> <a href="mailto:premsaigovardhanagiri@gmail.com">premsaigovardhanagiri@gmail.com</a></p>
+            <p>📧 <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#0f7f7d6a627c6e666860796e7d6b676e616e68667d664f68626e6663216c6062"><span class="__cf_email__" data-cfemail="4b3b392e26382a222c243d2a392f232a252a2c2239220b2c262a222765282426">[email&#160;protected]</span></a></p>
             <p>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/premsaig" target="_blank">linkedin.com/in/premsaig</a></p>
             <p>𝕏 <strong>X:</strong> <a href="https://twitter.com/PremSaiGG" target="_blank">@PremSaiGG</a></p>
             <p>✍️ <strong>Substack:</strong> <a href="https://premsaigg.substack.com/" target="_blank">premsaigg.substack.com</a></p>
@@ -856,7 +863,7 @@
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const carousels = {
             coffee: { currentIndex: 0, totalImages: 5 },
             cooking: { currentIndex: 0, totalImages: 3 }
@@ -975,13 +982,4 @@
                 navLinks.style.top = '100%';
                 navLinks.style.left = '0';
                 navLinks.style.right = '0';
-                navLinks.style.background = 'rgba(250, 250, 250, 0.98)';
-                navLinks.style.padding = '1rem';
-                navLinks.style.borderTop = '1px solid var(--border)';
-            }
-        });
-
-        window.addEventListener('DOMContentLoaded', initCarousels);
-    </script>
-</body>
-</html>
+                navLinks.style.background = 'rgba
