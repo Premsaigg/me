@@ -16,8 +16,7 @@
             --primary: #2c2c2c;
             --secondary: #666;
             --accent: #8b4513;
-            --bg-light: #fafafa;
-            --bg-white: #ffffff;
+            --bg: #fafafa;
             --border: #e0e0e0;
             --accent-light: #f5f0eb;
         }
@@ -29,30 +28,97 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--primary);
-            background: var(--bg-white);
+            background: var(--bg);
             line-height: 1.7;
             font-size: 16px;
         }
 
-        .back-link {
-            display: inline-block;
-            margin: 2rem auto;
-            padding: 0.5rem 1rem;
-            color: var(--accent);
-            text-decoration: none;
-            border: 1px solid var(--border);
-            border-radius: 4px;
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 250, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .back-link:hover {
-            background: var(--accent-light);
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 2rem;
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .social-icons a {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
         }
 
         section {
             max-width: 900px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            margin-top: 120px;
         }
 
         h1 {
@@ -136,7 +202,7 @@
         }
 
         footer {
-            background: var(--bg-light);
+            background: white;
             border-top: 1px solid var(--border);
             padding: 2rem;
             text-align: center;
@@ -144,12 +210,56 @@
             font-size: 0.9rem;
             margin-top: 4rem;
         }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Prem</a>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="coffee.html">Coffee</a>
+                <a href="sports.html" class="active">Sports</a>
+                <a href="index.html#interests">Interests</a>
+                <a href="index.html#contact">Contact</a>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/premsaig" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://twitter.com/PremSaiGG" target="_blank" title="X">𝕏</a>
+                    <a href="https://premsaigg.substack.com/" target="_blank" title="Substack">✍</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
     <section>
-        <a href="index.html" class="back-link">← Back to main site</a>
-        
         <h1>🏆 My Sports Management Pitch</h1>
 
         <h3>What I'm Looking For</h3>
@@ -194,7 +304,44 @@
 
     <footer>
         <p>&copy; 2025 Prem Sai Govardhanagiri</p>
-        <p style="margin-top: 0.5rem;"><a href="index.html" style="color: var(--secondary); text-decoration: none;">← Back to main site</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="index.html#about" style="color: var(--secondary); text-decoration: none;">About</a> • 
+            <a href="index.html#skills" style="color: var(--secondary); text-decoration: none;">Skills</a> • 
+            <a href="coffee.html" style="color: var(--secondary); text-decoration: none;">Coffee</a> • 
+            <a href="sports.html" style="color: var(--secondary); text-decoration: none;">Sports</a> • 
+            <a href="index.html#interests" style="color: var(--secondary); text-decoration: none;">Interests</a> • 
+            <a href="index.html#contact" style="color: var(--secondary); text-decoration: none;">Contact</a>
+        </p>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(250, 250, 250, 0.98)';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderTop = '1px solid var(--border)';
+            }
+        });
+    </script>
 </body>
 </html>
