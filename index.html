@@ -973,8 +973,10 @@
         }
 
         window.addEventListener('scroll', updateActiveNav);
-        window.addEventListener('DOMContentLoaded', updateActiveNav);
-
+        window.addEventListener('DOMContentLoaded', function() {
+            updateActiveNav();
+            initCarousels();
+        });
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         
