@@ -878,20 +878,24 @@
 
         function updateCarousel(category) {
             const carousel = document.getElementById(`${category}-carousel`);
-            const offset = -carousels[category].currentIndex * 100;
-            carousel.style.transform = `translateX(${offset}%)`;
-            updateDots(category);
+            if (carousel) {
+                const offset = -carousels[category].currentIndex * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+                updateDots(category);
+            }
         }
 
         function createDots(category) {
             const dotsContainer = document.getElementById(`${category}-dots`);
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < carousels[category].totalImages; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                if (i === 0) dot.classList.add('active');
-                dot.onclick = () => goToImage(category, i);
-                dotsContainer.appendChild(dot);
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < carousels[category].totalImages; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.onclick = () => goToImage(category, i);
+                    dotsContainer.appendChild(dot);
+                }
             }
         }
 
@@ -903,22 +907,24 @@
         }
 
         function nextImage(category) {
-            if (carousels[category].currentIndex < carousels[category].totalImages - 1) {
+            if (carousels[category] && carousels[category].currentIndex < carousels[category].totalImages - 1) {
                 carousels[category].currentIndex++;
                 updateCarousel(category);
             }
         }
 
         function prevImage(category) {
-            if (carousels[category].currentIndex > 0) {
+            if (carousels[category] && carousels[category].currentIndex > 0) {
                 carousels[category].currentIndex--;
                 updateCarousel(category);
             }
         }
 
         function goToImage(category, index) {
-            carousels[category].currentIndex = index;
-            updateCarousel(category);
+            if (carousels[category]) {
+                carousels[category].currentIndex = index;
+                updateCarousel(category);
+            }
         }
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
