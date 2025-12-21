@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Work · Prem Sai Govardhanagiri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c2c2c;
+            --secondary: #666;
+            --accent: #8b4513;
+            --accent-light: #f5f0eb;
+            --bg: #fafafa;
+            --bg-white: #ffffff;
+            --border: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--primary);
+            background: var(--bg);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1.25rem;
+            padding-left: 1.25rem;
+            border-left: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            padding: 7rem 2rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-header p {
+            font-size: 1.05rem;
+            color: var(--secondary);
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        /* ===== INTEREST BLOCK ===== */
+        .interest-block {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .interest-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .interest-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .interest-header-icon {
+            font-size: 1.5rem;
+        }
+
+        .interest-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .interest-intro {
+            color: var(--secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .interest-text {
+            color: var(--secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ===== IMAGE GRID ===== */
+        .media-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .media-images img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--border);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+
+        /* ===== LIST SECTIONS ===== */
+        .list-section {
+            margin: 2rem 0;
+        }
+
+        .list-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 0.75rem 0;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .content-list em {
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        .content-list a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content-list a:hover {
+            color: var(--accent);
+        }
+
+        .post-title {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .see-all {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .see-all:hover {
+            opacity: 0.7;
+        }
+
+        /* ===== CLOSING BRIDGE ===== */
+        .closing-bridge {
+            margin-top: 3rem;
+            padding: 2rem 0 2rem 2rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .closing-bridge p {
+            color: var(--secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .closing-bridge p::before {
+            content: '"';
+        }
+
+        .closing-bridge p::after {
+            content: '"';
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .nav-links > a {
+                display: none;
+            }
+
+            .social-icons {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+            }
+
+            .page-header {
+                padding: 6rem 1.5rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .content {
+                padding: 1.5rem 1.5rem 3rem;
+            }
+
+            .media-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Prem</a>
+            <div class="nav-links">
+                <a href="index.html#how-i-work">How I Work</a>
+                <a href="index.html#background">Background</a>
+                <a href="index.html#focus">Focus</a>
+                <a href="interests.html" class="active">Interests</a>
+                <a href="index.html#contact">Contact</a>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/premsaig" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+                    <a href="https://twitter.com/PremSaiGG" target="_blank" rel="noopener noreferrer" title="X">𝕏</a>
+                    <a href="https://premsaigg.substack.com" target="_blank" rel="noopener noreferrer" title="Substack">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <a href="index.html" class="back-link">← Back to main</a>
+        <h1>Beyond Work</h1>
+        <p>Outside work, I get absorbed in things. Coffee brewing, cooking, sports, reading, writing. These aren't just hobbies; they're how I stay curious.</p>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- COFFEE -->
+        <div class="interest-block">
+            <div class="interest-header">
+                <span class="interest-header-icon">☕</span>
+                <h2>Coffee</h2>
+            </div>
+            
+            <p class="interest-intro">I've brewed at home since 2021 using a moka pot, Picopresso, and pour-over. The ritual stuck.</p>
+            
+            <p class="interest-text">I enjoy the balance between experimentation and a reliably good morning cup. The daily ritual feels meditative. I gravitate towards Indian coffees: sweet, low acidity, medium body.</p>
+            
+            <div class="media-images">
+                <img src="images/coffee-1.jpg" alt="Coffee brewing">
+                <img src="images/coffee-2.jpg" alt="Coffee brewing">
+                <img src="images/coffee-3.jpg" alt="Coffee brewing">
+            </div>
+        </div>
+
+        <!-- COOKING -->
+        <div class="interest-block">
+            <div class="interest-header">
+                <span class="interest-header-icon">🍳</span>
+                <h2>Cooking</h2>
+            </div>
+            
+            <p class="interest-text">Exploring techniques, flavours, and the satisfaction of making something from scratch. No particular cuisine, just whatever catches my interest that week.</p>
+            
+            <p class="interest-text">I enjoy the process: learning how ingredients work together, understanding why certain techniques produce specific results, getting immediate feedback by tasting what I've made. Recently, experimenting with different flavour combinations for hummus.</p>
+            
+            <div class="media-images">
+                <img src="images/cooking-1.jpg" alt="Cooking">
+                <img src="images/cooking-2.jpg" alt="Cooking">
+                <img src="images/cooking-3.jpg" alt="Cooking">
+            </div>
+        </div>
+
+        <!-- WRITING -->
+        <div class="interest-block">
+            <div class="interest-header">
+                <span class="interest-header-icon">✍️</span>
+                <h2>Writing</h2>
+            </div>
+            
+            <p class="interest-intro">I write about sports on Substack: fan diaries that connect personal passion with broader narratives.</p>
+            
+            <p class="interest-text">I follow cycling, tennis, cricket, golf, and rugby closely. What interests me beyond fandom is the machinery behind it: how tournaments are executed, fan experiences crafted, and teams build culture alongside commercial success.</p>
+            
+            <p class="interest-text">My writing explores these themes through the lens of being a fan. I'm building a regular writing practice.</p>
+            
+            <ul class="content-list">
+                <li><a href="https://premsaigg.substack.com/p/pogacar-and-predictability" target="_blank"><span class="post-title">Pogacar and Predictability</span> – What the dominance of Pogacar means for this fan</a></li>
+                <li><a href="https://premsaigg.substack.com/p/a-week-for-ages" target="_blank"><span class="post-title">A week for ages</span> – When so much happens at once: Djokovic's exit, Sinner's triumph, Alcaraz's rise</a></li>
+            </ul>
+            <a href="https://premsaigg.substack.com" target="_blank" class="see-all">See all writing →</a>
+        </div>
+
+        <!-- READING -->
+        <div class="interest-block">
+            <div class="interest-header">
+                <span class="interest-header-icon">📚</span>
+                <h2>Reading</h2>
+            </div>
+            
+            <p class="interest-intro">I lean towards politics, economics, and policy. Books that help me understand how systems work and why they fail.</p>
+            
+            <p class="interest-text">I'm drawn to writers who can explain complex systems clearly and show how incentives shape outcomes. The best books challenge my assumptions and show me patterns I hadn't noticed.</p>
+            
+            <div class="list-section">
+                <h3>Currently Reading</h3>
+                <ul class="content-list">
+                    <li><em>Gods, Guns and Missionaries</em> by Manu Pillai</li>
+                    <li><em>The God of Small Things</em> by Arundhati Roy</li>
+                </ul>
+            </div>
+
+            <div class="list-section">
+                <h3>Newsletters I Follow</h3>
+                <ul class="content-list">
+                    <li><a href="https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine" target="_blank">Matt Levine's Money Stuff</a> – Financial markets explained with clarity and wit</li>
+                    <li><a href="https://publicpolicy.substack.com/" target="_blank">Anticipating the Unintended</a> – Indian public policy analysis</li>
+                    <li><a href="https://adamtooze.substack.com/" target="_blank">Chartbook</a> – Economics, history, and geopolitics</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CLOSING BRIDGE -->
+        <div class="closing-bridge">
+            <p>These interests shape how I think and notice things. My work reflects the same curiosity, just applied to teams, systems, and decisions.</p>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            <a href="index.html">Home</a> · 
+            <a href="index.html#how-i-work">How I Work</a> · 
+            <a href="index.html#contact">Contact</a>
+        </p>
+        <p style="margin-top: 0.5rem;">© 2025 Prem Sai Govardhanagiri</p>
+    </footer>
+
+</body>
+</html>
