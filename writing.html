@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing · Prem Sai Govardhanagiri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c2c2c;
+            --secondary: #666;
+            --accent: #8b4513;
+            --accent-light: #faf6f2;
+            --bg: #fafafa;
+            --bg-white: #ffffff;
+            --border: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--primary);
+            background: var(--bg);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1.25rem;
+            padding-left: 1.25rem;
+            border-left: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            padding: 7rem 2rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-header p {
+            font-size: 1.05rem;
+            color: var(--secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .page-header .substack-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .page-header .substack-link:hover {
+            opacity: 0.7;
+        }
+
+        .page-header .substack-link svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--accent);
+        }
+
+        /* ===== CONTENT ===== */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        /* ===== WRITING CARDS ===== */
+        .writing-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .writing-card {
+            background: var(--bg-white);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .writing-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            border-color: var(--accent);
+        }
+
+        .writing-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .source-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .writing-date {
+            font-size: 0.85rem;
+            color: var(--secondary);
+        }
+
+        .writing-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .writing-card p {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .read-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .read-arrow span {
+            transition: transform 0.3s ease;
+        }
+
+        .writing-card:hover .read-arrow span {
+            transform: translateX(4px);
+        }
+
+        /* ===== SECTION DIVIDER ===== */
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label:first-of-type {
+            margin-top: 0;
+        }
+
+        /* ===== EMPTY STATE / COMING SOON ===== */
+        .coming-soon {
+            padding: 2rem;
+            background: var(--accent-light);
+            border-radius: 10px;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .nav-links > a {
+                display: none;
+            }
+
+            .social-icons {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+            }
+
+            .page-header {
+                padding: 6rem 1.5rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .content {
+                padding: 1.5rem 1.5rem 3rem;
+            }
+
+            .writing-card {
+                padding: 1.5rem;
+            }
+
+            .writing-card h2 {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Prem</a>
+            <div class="nav-links">
+                <a href="index.html#focus">Why Sport</a>
+                <a href="index.html#how-i-work">How I Work</a>
+                <a href="index.html#background">Background</a>
+                <a href="writing.html" class="active">Writing</a>
+                <a href="interests.html">Interests</a>
+                <a href="index.html#contact">Contact</a>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/premsaig" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+                    <a href="https://twitter.com/PremSaiGG" target="_blank" rel="noopener noreferrer" title="X">𝕏</a>
+                    <a href="https://premsaigg.substack.com" target="_blank" rel="noopener noreferrer" title="Substack">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <a href="index.html" class="back-link">&larr; Back to main</a>
+        <h1>Writing</h1>
+        <p>I write about sport — not scores, but the structures underneath. Fan diaries, questions about how the industry works, and observations from following cycling, tennis, cricket, and rugby closely.</p>
+        <a href="https://premsaigg.substack.com" target="_blank" class="substack-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+            </svg>
+            Subscribe on Substack
+        </a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <h3 class="section-label">Essays</h3>
+
+        <div class="writing-list">
+
+            <!-- India Anti-Doping -->
+            <a href="india-doping-article.html" class="writing-card">
+                <div class="writing-card-meta">
+                    <span class="source-tag">Feature</span>
+                    <span class="writing-date">April 2026</span>
+                </div>
+                <h2>India's Anti-Doping Story in Numbers</h2>
+                <p>India has reported more anti-doping violations than any other country for three years running. One in every 33 samples tests positive — versus 0.77% globally. What the numbers actually show.</p>
+                <div class="read-arrow">Read <span>&rarr;</span></div>
+            </a>
+
+            <!-- Pogacar -->
+            <a href="https://premsaigg.substack.com/p/pogacar-and-predictability" target="_blank" class="writing-card">
+                <div class="writing-card-meta">
+                    <span class="source-tag">Substack</span>
+                    <span class="writing-date">October 2025</span>
+                </div>
+                <h2>Pogacar and Predictability</h2>
+                <p>What the dominance of Pogacar means for this fan. When one rider is so far ahead of the field, what happens to the drama that makes sport worth watching?</p>
+                <div class="read-arrow">Read <span>&rarr;</span></div>
+            </a>
+
+            <!-- Post 2 -->
+            <a href="https://premsaigg.substack.com/p/a-week-for-ages" target="_blank" class="writing-card">
+                <div class="writing-card-meta">
+                    <span class="source-tag">Substack</span>
+                    <span class="writing-date">June 2025</span>
+                </div>
+                <h2>A Week for Ages</h2>
+                <p>There are months when little happens, and then a week where everything does. Djokovic's exit, Sinner's triumph, Alcaraz's rise, Simon Yates's redemption, and RCB's first IPL trophy.</p>
+                <div class="read-arrow">Read <span>&rarr;</span></div>
+            </a>
+
+        </div>
+
+        <!--
+        ============================================
+        TO ADD A NEW POST: Copy the block below,
+        paste it at the TOP of the writing-list div,
+        and fill in your details.
+        ============================================
+
+        <a href="YOUR_URL_HERE" target="_blank" class="writing-card">
+            <div class="writing-card-meta">
+                <span class="source-tag">Substack</span>
+                <span class="writing-date">Month Year</span>
+            </div>
+            <h2>Post Title</h2>
+            <p>One or two sentences describing the piece.</p>
+            <div class="read-arrow">Read <span>&rarr;</span></div>
+        </a>
+
+        For non-Substack sources, change the source-tag text:
+        <span class="source-tag">LinkedIn</span>
+        <span class="source-tag">Guest Post</span>
+        <span class="source-tag">Blog</span>
+        ============================================
+        -->
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            <a href="index.html">Home</a> &middot;
+            <a href="index.html#how-i-work">How I Work</a> &middot;
+            <a href="interests.html">Interests</a> &middot;
+            <a href="index.html#contact">Contact</a>
+        </p>
+        <p style="margin-top: 0.5rem;">&copy; 2025 Prem Sai Govardhanagiri</p>
+    </footer>
+
+</body>
+</html>
