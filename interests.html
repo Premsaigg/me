@@ -39,7 +39,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(250, 250, 250, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
@@ -108,6 +108,94 @@
             height: 16px;
             fill: currentColor;
         }
+
+        /* ===== HAMBURGER + SIDEBAR ===== */
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            color: var(--primary);
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1100;
+        }
+        .sidebar-overlay.open { display: block; }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100%;
+            background: var(--bg-white);
+            z-index: 1200;
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
+        }
+        .sidebar.open { transform: translateX(0); }
+        .sidebar-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+            padding: 0.25rem;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+        .sidebar-close:hover { color: var(--accent); }
+        .sidebar-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .sidebar-nav { display: block; }
+        .sidebar-nav a {
+            display: block;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: color 0.2s;
+        }
+        .sidebar-nav a:hover { color: var(--accent); }
+        .sidebar-socials {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .sidebar-socials a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar-socials a:hover { color: var(--accent); }
+        .sidebar-socials svg { width: 18px; height: 18px; fill: currentColor; }
 
         /* ===== PAGE HEADER ===== */
         .page-header {
@@ -339,14 +427,12 @@
                 padding: 0.75rem 1.5rem;
             }
 
-            .nav-links > a {
+            .nav-links {
                 display: none;
             }
 
-            .social-icons {
-                margin-left: 0;
-                padding-left: 0;
-                border-left: none;
+            .nav-hamburger {
+                display: block;
             }
 
             .page-header {
@@ -372,11 +458,12 @@
     <!-- HEADER -->
     <header>
         <nav>
+            <button class="nav-hamburger" aria-label="Open menu">&#9776;</button>
             <a href="index.html" class="logo">Prem</a>
             <div class="nav-links">
+                <a href="index.html#focus">Why Sport</a>
                 <a href="index.html#how-i-work">How I Work</a>
                 <a href="index.html#background">Background</a>
-                <a href="index.html#focus">Focus</a>
                 <a href="writing.html">Writing</a>
                 <a href="interests.html" class="active">Interests</a>
                 <a href="index.html#contact">Contact</a>
@@ -496,6 +583,43 @@
         </p>
         <p style="margin-top: 0.5rem;">© 2025 Prem Sai Govardhanagiri</p>
     </footer>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebar-close" aria-label="Close menu">&times;</button>
+        <p class="sidebar-name">Prem</p>
+        <nav class="sidebar-nav">
+            <a href="index.html#focus">Why Sport</a>
+            <a href="index.html#how-i-work">How I Work</a>
+            <a href="index.html#background">Background</a>
+            <a href="writing.html">Writing</a>
+            <a href="interests.html">Interests</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="sidebar-socials">
+            <a href="https://linkedin.com/in/premsaig" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+            <a href="https://twitter.com/PremSaiGG" target="_blank" rel="noopener noreferrer" title="X">𝕏</a>
+            <a href="https://premsaigg.substack.com" target="_blank" rel="noopener noreferrer" title="Substack">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                </svg>
+            </a>
+        </div>
+    </aside>
+    <script>
+    (function () {
+        var hamburger = document.querySelector('.nav-hamburger');
+        var sidebar = document.getElementById('sidebar');
+        var overlay = document.getElementById('sidebar-overlay');
+        var closeBtn = document.getElementById('sidebar-close');
+        function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+        hamburger.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+    })();
+    </script>
 
 </body>
 </html>
